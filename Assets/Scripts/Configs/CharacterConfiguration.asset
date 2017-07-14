@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1096e1c38be8df747b8fe62d55ba8f37, type: 3}
+  m_Name: CharacterConfiguration
+  m_EditorClassIdentifier: 
+  JumpHeight: 4
+  MovementSpeed: 6
+  TimeToJumpMax: 0.4
+  AccelerationTimeGrounded: 0.25
+  AccelerationTimeAir: 0.4
