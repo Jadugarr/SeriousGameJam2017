@@ -4,12 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-    public float jumpHeight = 4f;
-    public float timeToJumpMax = .4f;
-
-    public float accelerationTimeAir = .4f;
-    public float accelerationTimeGrounded = .25f;
-    public float moveSpeed = 6f;
+    [SerializeField] private CharacterConfig charConfig;
 
     //Private Stuff
     private float gravity;
@@ -21,8 +16,8 @@ public class PlayerController : MonoBehaviour {
 
 	void Start () {
         controller = GetComponent<MovementController>();
-        gravity = -(2 * jumpHeight) / Mathf.Pow(timeToJumpMax, 2);
-        jumpVelocity = Mathf.Abs(gravity) * timeToJumpMax;
+        gravity = -(2 * charConfig.JumpHeight) / Mathf.Pow(charConfig.TimeToJumpMax, 2);
+        jumpVelocity = Mathf.Abs(gravity) * charConfig.TimeToJumpMax;
     }
 	
 	void Update () {
@@ -36,11 +31,11 @@ public class PlayerController : MonoBehaviour {
 
         if(Input.GetKeyDown(KeyCode.Space) && controller.collisions.below)
         {
-            input.y = jumpVelocity;
+            velocity.y = jumpVelocity;
         }
 
-        float targetVelocityX = input.x * moveSpeed;
-        velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAir);
+        float targetVelocityX = input.x * charConfig.MovementSpeed;
+        velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? charConfig.AccelerationTimeGrounded : charConfig.AccelerationTimeAir);
         velocity.y += gravity * Time.deltaTime;
         controller.Move(new Vector3(velocity.x, velocity.y, 0f) * Time.deltaTime);
 	}
