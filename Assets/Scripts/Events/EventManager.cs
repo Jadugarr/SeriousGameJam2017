@@ -3,6 +3,8 @@
 public enum EventTypes
 {
     EnteredDestructionZone,
+    JumpEvent,
+    AxisInputEvent
 }
 
 /// <summary>
