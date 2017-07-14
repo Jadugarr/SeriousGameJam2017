@@ -57,5 +57,6 @@ public class PlayerController : MonoBehaviour {
         velocity.y += gravity * Time.deltaTime;
         controller.Move(new Vector3(velocity.x, velocity.y, 0f) * Time.deltaTime);
         startJump = false;
+        input = Vector2.zero;
 	}
 }
