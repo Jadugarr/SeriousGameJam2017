@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class SpawnController : MonoBehaviour
@@ -17,13 +18,6 @@ public class SpawnController : MonoBehaviour
 
     public void Update()
     {
-        float moveAxis = Input.GetAxis("Horizontal");
-
-        if (moveAxis != 0)
-        {
-            gameObject.transform.Translate(new Vector3(moveAxis * speed, 0, 0));
-        }
-
         if (lastLevelPosition == Vector3.zero)
         {
             lastLevelPosition = gameObject.transform.position;
@@ -67,12 +61,13 @@ public class SpawnController : MonoBehaviour
         }
 
         GameObject objectToSpawn = platformConfig.Platforms[Random.Range(0, platformConfig.Platforms.Length)];
-        float yPositionToSpawn =
-            Random.Range(
+        int yPositionToSpawn =
+            Convert.ToInt32(Math.Floor(Random.Range(
                 Mathf.Clamp(lastSpawnedPosition.y + characterConfig.JumpHeight, spawnEnd.position.y,
-                    spawnStart.position.y), spawnEnd.position.y);
+                    spawnStart.position.y), spawnEnd.position.y)));
 
-        GameObject spawnedGameObject = Instantiate(objectToSpawn, new Vector3(spawnStart.position.x, yPositionToSpawn, 0),
+        GameObject spawnedGameObject = Instantiate(objectToSpawn,
+            new Vector3(Convert.ToInt32(Math.Floor(spawnStart.position.x)), yPositionToSpawn, 0),
             objectToSpawn.transform.rotation);
 
         lastSpawnedPosition = spawnedGameObject.transform.position;
