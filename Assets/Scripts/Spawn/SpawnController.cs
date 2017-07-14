@@ -1,16 +1,19 @@
 ﻿using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class SpawnController : MonoBehaviour
 {
     [SerializeField] private RectTransform spawnStart;
     [SerializeField] private RectTransform spawnEnd;
     [SerializeField] private SpawnPrefabConfig platformConfig;
+    [SerializeField] private CharacterConfig characterConfig;
     [SerializeField] private float moveThresholdToSpawn;
     [SerializeField] private float speed;
 
     private EventManager eventManager = EventManager.Instance;
     private float currentThreshold;
-    private Vector3 lastPosition;
+    private Vector3 lastLevelPosition;
+    private Vector3 lastSpawnedPosition;
 
     public void Update()
     {
@@ -21,13 +24,13 @@ public class SpawnController : MonoBehaviour
             gameObject.transform.Translate(new Vector3(moveAxis * speed, 0, 0));
         }
 
-        if (lastPosition == Vector3.zero)
+        if (lastLevelPosition == Vector3.zero)
         {
-            lastPosition = gameObject.transform.position;
+            lastLevelPosition = gameObject.transform.position;
         }
 
-        currentThreshold += gameObject.transform.position.x - lastPosition.x;
-        lastPosition = gameObject.transform.position;
+        currentThreshold += gameObject.transform.position.x - lastLevelPosition.x;
+        lastLevelPosition = gameObject.transform.position;
 
         if (currentThreshold >= moveThresholdToSpawn)
         {
@@ -58,11 +61,21 @@ public class SpawnController : MonoBehaviour
 
     private void SpawnPlatform()
     {
-        GameObject objectToSpawn = platformConfig.Platforms[Random.Range(0, platformConfig.Platforms.Length)];
-        float yPositionToSpawn = Random.Range(spawnStart.position.y, spawnEnd.position.y);
+        if (lastSpawnedPosition == Vector3.zero)
+        {
+            lastSpawnedPosition = spawnStart.position;
+        }
 
-        Instantiate(objectToSpawn, new Vector3(spawnStart.position.x, yPositionToSpawn, 0),
+        GameObject objectToSpawn = platformConfig.Platforms[Random.Range(0, platformConfig.Platforms.Length)];
+        float yPositionToSpawn =
+            Random.Range(
+                Mathf.Clamp(lastSpawnedPosition.y + characterConfig.JumpHeight, spawnEnd.position.y,
+                    spawnStart.position.y), spawnEnd.position.y);
+
+        GameObject spawnedGameObject = Instantiate(objectToSpawn, new Vector3(spawnStart.position.x, yPositionToSpawn, 0),
             objectToSpawn.transform.rotation);
+
+        lastSpawnedPosition = spawnedGameObject.transform.position;
     }
 
     private void OnDestructionZoneEntered(IEvent args)

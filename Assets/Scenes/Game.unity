@@ -155,6 +155,7 @@ MonoBehaviour:
   spawnStart: {fileID: 1413684492}
   spawnEnd: {fileID: 499503073}
   platformConfig: {fileID: 11400000, guid: cdf8f91d72ef22f4d9b57c2120bae869, type: 2}
+  characterConfig: {fileID: 11400000, guid: 62fb9496d3e0f0842ae40434c63bf2b6, type: 2}
   moveThresholdToSpawn: 3
   speed: 0.2
 --- !u!1 &476340529
