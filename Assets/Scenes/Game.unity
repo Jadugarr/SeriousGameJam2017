@@ -117,6 +117,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 432296515}
+  - component: {fileID: 432296516}
   m_Layer: 0
   m_Name: LevelArea
   m_TagString: Untagged
@@ -136,9 +137,26 @@ Transform:
   m_Children:
   - {fileID: 779078703}
   - {fileID: 1277977540}
+  - {fileID: 988990965}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &432296516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 432296514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7d1654aea241c347873c2dd6aef17dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnStart: {fileID: 1413684492}
+  spawnEnd: {fileID: 499503073}
+  platformConfig: {fileID: 11400000, guid: cdf8f91d72ef22f4d9b57c2120bae869, type: 2}
+  moveThresholdToSpawn: 3
+  speed: 0.2
 --- !u!1 &476340529
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,7 +234,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &499503072
 GameObject:
@@ -368,12 +386,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 988990960}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_Father: {fileID: 432296515}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1277977539
 GameObject:
@@ -384,6 +402,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1277977540}
   - component: {fileID: 1277977541}
+  - component: {fileID: 1277977542}
   m_Layer: 0
   m_Name: DestructionZone
   m_TagString: Untagged
@@ -413,7 +432,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -427,8 +446,19 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 20}
+  m_Size: {x: 1, y: 50}
   m_EdgeRadius: 0
+--- !u!114 &1277977542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1277977539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63480e6a2e0f3ea4b89c4cd6d17593df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1413684491
 GameObject:
   m_ObjectHideFlags: 0

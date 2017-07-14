@@ -2,6 +2,7 @@
 
 public enum EventTypes
 {
+    EnteredDestructionZone,
 }
 
 /// <summary>
