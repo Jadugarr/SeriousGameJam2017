@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Platform
   - environment
+  - Enemy
+  - EnemySpawnPoint
   layers:
   - Default
   - TransparentFX

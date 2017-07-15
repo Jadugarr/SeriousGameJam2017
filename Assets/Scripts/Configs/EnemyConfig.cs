@@ -5,5 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "EnemyConfiguration", menuName = "Configurations/EnemyConfiguration")]
 public class EnemyConfig : ScriptableObject
 {
-    [SerializeField] public GameObject[] PossibleEnemies;
+    [SerializeField] public float EnemySpawnChance;
+    [SerializeField] public EnemyConfigObject[] PossibleEnemies;
 }

@@ -8,8 +8,8 @@ public class SpawnController : MonoBehaviour
     [SerializeField] private RectTransform spawnEnd;
     [SerializeField] private SpawnPrefabConfig platformConfig;
     [SerializeField] private CharacterConfig characterConfig;
+    [SerializeField] private EnemyConfig enemyConfig;
     [SerializeField] private float moveThresholdToSpawn;
-    [SerializeField] private float speed;
 
     private EventManager eventManager = EventManager.Instance;
     private float currentThreshold;
@@ -71,6 +71,37 @@ public class SpawnController : MonoBehaviour
             objectToSpawn.transform.rotation);
 
         lastSpawnedPosition = spawnedGameObject.transform.position;
+
+        SpawnEnemy(spawnedGameObject);
+    }
+
+    private void SpawnEnemy(GameObject spawnedPlatform)
+    {
+        int randomNumber = Random.Range(1, 101);
+
+        if (randomNumber <= enemyConfig.EnemySpawnChance * 100)
+        {
+            GameObject spawnPoint = null;
+
+            foreach (Transform currentTransform in spawnedPlatform.transform)
+            {
+                if (currentTransform.CompareTag("EnemySpawnPoint"))
+                {
+                    spawnPoint = currentTransform.gameObject;
+                    break;
+                }
+            }
+
+            if (spawnPoint != null)
+            {
+                EnemyConfigObject enemyConfigObject = enemyConfig
+                    .PossibleEnemies[Random.Range(0, enemyConfig.PossibleEnemies.Length)];
+                GameObject enemyToSpawn = enemyConfigObject.EnemyPrefab;
+                GameObject enemy = Instantiate(enemyToSpawn, spawnPoint.transform);
+                EnemyBehaviour behaviour = enemy.GetComponent<EnemyBehaviour>();
+                behaviour.EnemyConfig = enemyConfigObject;
+            }
+        }
     }
 
     private void OnDestructionZoneEntered(IEvent args)
