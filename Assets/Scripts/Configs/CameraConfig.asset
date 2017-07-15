@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c854aa64776be49bd8effe01894b4c, type: 3}
+  m_Name: CameraConfig
+  m_EditorClassIdentifier: 
+  horizontalDelta: 1.5
+  verticalDelta: 1.5
+  dampFactor: 0.1
+  timeToFixPos: 0.8
+  camSlowSpeed: 0.5

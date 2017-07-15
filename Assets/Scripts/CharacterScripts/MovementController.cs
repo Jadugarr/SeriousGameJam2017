@@ -45,7 +45,7 @@ public class MovementController : MonoBehaviour {
             VerticalCollisions(ref velocity);
         }
         this.transform.Translate(velocity);
-        collisions.DebugOutput();
+        //collisions.DebugOutput();
     }
 
     void HorizontalCollisions(ref Vector3 velocity)
