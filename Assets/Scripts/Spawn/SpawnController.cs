@@ -10,6 +10,7 @@ public class SpawnController : MonoBehaviour
     [SerializeField] private SpawnPrefabConfig platformConfig;
     [SerializeField] private CharacterConfig characterConfig;
     [SerializeField] private EnemyConfig enemyConfig;
+    [SerializeField] private GameObject playerGameObject;
     [SerializeField] private float moveThresholdToSpawn;
 
     private EventManager eventManager = EventManager.Instance;
@@ -22,11 +23,12 @@ public class SpawnController : MonoBehaviour
     {
         if (lastLevelPosition == Vector3.zero)
         {
-            lastLevelPosition = gameObject.transform.position;
+            lastLevelPosition = playerGameObject.transform.position;
         }
 
-        currentThreshold += gameObject.transform.position.x - lastLevelPosition.x;
-        lastLevelPosition = gameObject.transform.position;
+        currentThreshold += playerGameObject.transform.position.x - lastLevelPosition.x;
+        gameObject.transform.Translate(new Vector3(playerGameObject.transform.position.x - lastLevelPosition.x, 0, 0));
+        lastLevelPosition = playerGameObject.transform.position;
 
         if (currentThreshold >= moveThresholdToSpawn)
         {
@@ -61,7 +63,7 @@ public class SpawnController : MonoBehaviour
         {
             lastSpawnedPosition = spawnStart.position;
         }
-        
+
         GameObject objectToSpawn = platformConfig.Platforms[Random.Range(0, platformConfig.Platforms.Length)];
         PlatformComponent platformComponent = objectToSpawn.GetComponent<PlatformComponent>();
         PlatformType typeToSpawn = platformComponent.PlatformType;
@@ -92,9 +94,12 @@ public class SpawnController : MonoBehaviour
                 Mathf.Clamp(lastSpawnedPosition.y + characterConfig.JumpHeight, spawnEnd.position.y,
                     spawnStart.position.y), spawnEnd.position.y)));
 
-        spawnedGameObject.transform.SetPositionAndRotation(new Vector3(Convert.ToInt32(Math.Floor(spawnStart.position.x + platformComponent.platformWidth / 2)), yPositionToSpawn, 0), objectToSpawn.transform.rotation);
+        spawnedGameObject.transform.SetPositionAndRotation(
+            new Vector3(Convert.ToInt32(Math.Floor(spawnStart.position.x + platformComponent.platformWidth / 2)),
+                yPositionToSpawn, 0), objectToSpawn.transform.rotation);
 
         lastSpawnedPosition = spawnedGameObject.transform.position;
+        gameObject.transform.Translate(new Vector3(0, 1, 0));
 
         SpawnEnemy(spawnedGameObject);
     }
@@ -137,7 +142,7 @@ public class SpawnController : MonoBehaviour
             EnemyBehaviour enemy = evtArgs.ObjectToDestroy.GetComponentInChildren<EnemyBehaviour>();
             if (enemy != null)
             {
-                 Destroy(enemy.gameObject);
+                Destroy(enemy.gameObject);
             }
 
             PlatformComponent platformComponent = evtArgs.ObjectToDestroy.GetComponent<PlatformComponent>();
