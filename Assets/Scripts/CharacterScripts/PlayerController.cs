@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private CharacterConfig charConfig;
+    [SerializeField] private PolygonCollider2D swordCollider;
 
 
     //Private Stuff
@@ -15,8 +14,10 @@ public class PlayerController : MonoBehaviour
     private Vector2 velocity;
     private float velocityXSmoothing;
     private Vector2 input;
+    private Animator playerAnimator;
 
     private bool startJump = false;
+    private bool isAttacking = false;
 
     MovementController controller;
 
@@ -24,9 +25,11 @@ public class PlayerController : MonoBehaviour
     {
         eventManager.RegisterForEvent(EventTypes.JumpEvent, OnJump);
         eventManager.RegisterForEvent(EventTypes.AxisInputEvent, OnAxisInput);
+        eventManager.RegisterForEvent(EventTypes.AttackInput, OnAttackInput);
         controller = GetComponent<MovementController>();
         gravity = -(2 * charConfig.JumpHeight) / Mathf.Pow(charConfig.TimeToJumpMax, 2);
         jumpVelocity = Mathf.Abs(gravity) * charConfig.TimeToJumpMax;
+        playerAnimator = GetComponent<Animator>();
     }
 
     private void OnAxisInput(IEvent axisInputEvent)
@@ -39,6 +42,15 @@ public class PlayerController : MonoBehaviour
         if (controller.collisions.below)
         {
             startJump = true;
+        }
+    }
+
+    private void OnAttackInput(IEvent args)
+    {
+        if (isAttacking == false)
+        {
+            playerAnimator.SetBool("Attacking", true);
+            isAttacking = true;
         }
     }
 
@@ -65,6 +77,22 @@ public class PlayerController : MonoBehaviour
 
     public void Attack()
     {
-        Debug.Log("Attack!");
+        Collider2D[] results = new Collider2D[5];
+        if (swordCollider.OverlapCollider(new ContactFilter2D().NoFilter(), results) > 0)
+        {
+            foreach (Collider2D collider in results)
+            {
+                if (collider != null && collider.tag == "Enemy")
+                {
+                    Destroy(collider.gameObject);
+                }
+            }
+        }
+    }
+
+    public void AttackFinished()
+    {
+        playerAnimator.SetBool("Attacking", false);
+        isAttacking = false;
     }
 }

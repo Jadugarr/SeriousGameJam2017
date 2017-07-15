@@ -5,7 +5,8 @@ public enum EventTypes
     EnteredDestructionZone,
     JumpEvent,
     AxisInputEvent,
-    EnemyDirectionTriggered
+    EnemyDirectionTriggered,
+    AttackInput
 }
 
 /// <summary>
