@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private bool knockback = false;
     private bool startJump = false;
     private bool isAttacking = false;
+    private int playerDir = 0;
 
     MovementController controller;
 
@@ -36,10 +37,16 @@ public class PlayerController : MonoBehaviour
 
     void OnDestroy()
     {
-        eventManager.RemoveFromEvent(EventTypes.JumpEvent, OnJump);
+	eventManager.RemoveFromEvent(EventTypes.JumpEvent, OnJump);
         eventManager.RemoveFromEvent(EventTypes.AxisInputEvent, OnAxisInput);
         eventManager.RemoveFromEvent(EventTypes.AttackInput, OnAttackInput);
         eventManager.RemoveFromEvent(EventTypes.PlayerHit, OnPlayerHit);
+        eventManager.RemoveFromEvent(EventTypes.PlayerHit, OnPlayerHit);
+    }
+    
+    public Vector2 GetPlayerVel()
+    {
+        return velocity;
     }
 
     private void OnPlayerHit(IEvent evt)
@@ -91,6 +98,23 @@ public class PlayerController : MonoBehaviour
         velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing,
             (controller.collisions.below) ? charConfig.AccelerationTimeGrounded : charConfig.AccelerationTimeAir);
         velocity.y += gravity * Time.deltaTime;
+        //
+        /*if(playerDir != 1 && velocity.x > 0f)
+        {
+            playerDir = 1;
+            eventManager.FireEvent(EventTypes.PlayerDirectionEvent, new PlayerDirectionEvent(1));
+        } 
+        if(playerDir != 0 && velocity.x == 0f)
+        {
+            playerDir = 0;
+            eventManager.FireEvent(EventTypes.PlayerDirectionEvent, new PlayerDirectionEvent(0));
+        } 
+        if(playerDir != -1 && velocity.x < 0f)
+        {
+            playerDir = -1;
+            eventManager.FireEvent(EventTypes.PlayerDirectionEvent, new PlayerDirectionEvent(-1));
+        }*/
+        //
         controller.Move(new Vector3(velocity.x, velocity.y, 0f) * Time.deltaTime);
         startJump = false;
         knockback = false;

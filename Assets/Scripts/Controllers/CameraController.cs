@@ -8,6 +8,7 @@ public class CameraController : MonoBehaviour {
 
     //Public Stuff
     public Transform playerTransform;
+    public Vector2 camVelocity;
 
 
 	// Use this for initialization
@@ -16,16 +17,18 @@ public class CameraController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        camVelocity = new Vector2(0f, 0f);
         //Check if Out of Bounds
         if(playerTransform.position.x > (this.transform.position.x + camConfig.horizontalDelta))
         {
             float deltaX = playerTransform.position.x - (this.transform.position.x + camConfig.horizontalDelta) ;
             this.transform.Translate(deltaX,0f,0f);
+            camVelocity = new Vector2(camVelocity.x + deltaX, camVelocity.y);
         }
         if((playerTransform.position.x - this.transform.position.x) > camConfig.dampFactor)
         {
             this.transform.Translate(Time.deltaTime * camConfig.camSlowSpeed,0f,0f);
+            camVelocity = new Vector2(camVelocity.x + (Time.deltaTime * camConfig.camSlowSpeed), camVelocity.y);
         }
         if (playerTransform.position.y > (this.transform.position.y + camConfig.verticalDelta))
         {

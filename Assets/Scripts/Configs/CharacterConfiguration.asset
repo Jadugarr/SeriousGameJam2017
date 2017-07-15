@@ -14,6 +14,6 @@ MonoBehaviour:
   JumpHeight: 5
   MovementSpeed: 10
   TimeToJumpMax: 0.3
-  AccelerationTimeGrounded: 0.1
-  AccelerationTimeAir: 0.15
+  AccelerationTimeGrounded: 0.05
+  AccelerationTimeAir: 0.05
   KnockbackStrength: {x: -15, y: 15}
