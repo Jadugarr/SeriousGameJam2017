@@ -32,6 +32,9 @@ public class SpawnController : MonoBehaviour
 
         if (currentThreshold >= moveThresholdToSpawn)
         {
+            Vector3 currentPos = gameObject.transform.position;
+            gameObject.transform.position = new Vector3(Mathf.Floor(currentPos.x), Mathf.Floor(currentPos.y),
+                Mathf.Floor(currentPos.z));
             SpawnPlatform();
             currentThreshold = 0f;
         }
@@ -89,14 +92,15 @@ public class SpawnController : MonoBehaviour
             spawnedGameObject = Instantiate(objectToSpawn);
         }
 
-        int yPositionToSpawn =
-            Convert.ToInt32(Math.Floor(Random.Range(
-                Mathf.Clamp(lastSpawnedPosition.y + characterConfig.JumpHeight, spawnEnd.position.y,
-                    spawnStart.position.y), spawnEnd.position.y)));
+        int yMax = Convert.ToInt32(Math.Floor(Mathf.Clamp(lastSpawnedPosition.y + characterConfig.JumpHeight - 1,
+            spawnEnd.position.y,
+            spawnStart.position.y)));
+        int yPositionToSpawn = Random.Range(Convert.ToInt32(spawnEnd.position.y), yMax);
+
+        int xPos = Convert.ToInt32(Math.Floor(spawnStart.position.x + platformComponent.platformWidth / 2f));
 
         spawnedGameObject.transform.SetPositionAndRotation(
-            new Vector3(Convert.ToInt32(Math.Floor(spawnStart.position.x + platformComponent.platformWidth / 2f)),
-                yPositionToSpawn, 0), objectToSpawn.transform.rotation);
+            new Vector3(xPos, yPositionToSpawn, 0), objectToSpawn.transform.rotation);
 
         lastSpawnedPosition = spawnedGameObject.transform.position;
         gameObject.transform.Translate(new Vector3(0, 1, 0));
