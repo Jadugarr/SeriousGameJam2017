@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Platform
   - environment
+  - pickup_invisblock
   layers:
   - Default
   - TransparentFX
