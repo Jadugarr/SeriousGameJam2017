@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114251701906591588}
   - component: {fileID: 114703531981866808}
   - component: {fileID: 50792385459531686}
+  - component: {fileID: 95956411460799558}
   m_Layer: 0
   m_Name: Demon
   m_TagString: Enemy
@@ -89,6 +90,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.0535817, y: 1.25}
   m_EdgeRadius: 0
+--- !u!95 &95956411460799558
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1688627622234296}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 47e4ab92591a620408461e17d6e3aa2d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114251701906591588
 MonoBehaviour:
   m_ObjectHideFlags: 1
