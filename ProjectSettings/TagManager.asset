@@ -9,6 +9,7 @@ TagManager:
   - pickup_invisblock
   - Enemy
   - EnemySpawnPoint
+  - Camera
   layers:
   - Default
   - TransparentFX
