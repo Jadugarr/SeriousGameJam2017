@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private CharacterConfig charConfig;
     [SerializeField] private PolygonCollider2D swordCollider;
 
+    public TextMesh protoText;
 
     //Private Stuff
     private EventManager eventManager = EventManager.Instance;
@@ -21,6 +22,12 @@ public class PlayerController : MonoBehaviour
     private bool isAttacking = false;
     private int playerDir = 0;
 
+
+    //PLAYERGAMELOGIC
+    private int currentProgress = 5;
+    private int currentProgStep = 0;
+    private float currentSpeed = 0;
+
     MovementController controller;
 
     void Start()
@@ -33,6 +40,7 @@ public class PlayerController : MonoBehaviour
         gravity = -(2 * charConfig.JumpHeight) / Mathf.Pow(charConfig.TimeToJumpMax, 2);
         jumpVelocity = Mathf.Abs(gravity) * charConfig.TimeToJumpMax;
         playerAnimator = GetComponent<Animator>();
+        currentSpeed = charConfig.MovementSpeed0;
     }
 
     void OnDestroy()
@@ -43,10 +51,63 @@ public class PlayerController : MonoBehaviour
         eventManager.RemoveFromEvent(EventTypes.PlayerHit, OnPlayerHit);
         eventManager.RemoveFromEvent(EventTypes.PlayerHit, OnPlayerHit);
     }
+
+    private void UpdateProgressBar()
+    {
+        if(currentProgress < 10)
+        {
+            currentProgStep = 0;
+            currentSpeed = charConfig.MovementSpeed0;
+        }
+        if(currentProgress >= 10)
+        {
+            currentProgStep = 1;
+            currentSpeed = charConfig.MovementSpeed10;
+        }
+        if (currentProgress >= 30)
+        {
+            currentProgStep = 2;
+            currentSpeed = charConfig.MovementSpeed30;
+        }
+        if (currentProgress >= 60)
+        {
+            currentProgStep = 3;
+            currentSpeed = charConfig.MovementSpeed60;
+        }
+        if (currentProgress >= 90)
+        {
+            currentProgStep = 4;
+            currentSpeed = charConfig.MovementSpeed90;
+        }
+        if (currentProgress >= 100)
+        {
+            currentProgStep = 5;
+            currentSpeed = charConfig.MovementSpeed100;
+        }
+        protoText.text = "Progress: " + currentProgress; 
+    }
     
     public Vector2 GetPlayerVel()
     {
         return velocity;
+    }
+
+    public void PowerPillTaken()
+    {
+        currentProgress += charConfig.progressPerPill;
+        UpdateProgressBar();
+    }
+
+    private void EnemySlain()
+    {
+        currentProgress += charConfig.progressPerEnemySlain;
+        UpdateProgressBar();
+    }
+
+    public void FellDown()
+    {
+        currentProgress -= charConfig.progressLossPerFall;
+        UpdateProgressBar();
     }
 
     private void OnPlayerHit(IEvent evt)
@@ -79,6 +140,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        Mathf.Clamp(currentProgress, 0, 100);
         if (controller.collisions.above || controller.collisions.below)
         {
             velocity.y = 0f;
@@ -94,7 +156,7 @@ public class PlayerController : MonoBehaviour
             velocity.y = charConfig.KnockbackStrength.y;
         }
 
-        float targetVelocityX = input.x * charConfig.MovementSpeed;
+        float targetVelocityX = input.x * currentSpeed;
         velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing,
             (controller.collisions.below) ? charConfig.AccelerationTimeGrounded : charConfig.AccelerationTimeAir);
         velocity.y += gravity * Time.deltaTime;
@@ -131,6 +193,7 @@ public class PlayerController : MonoBehaviour
                 if (collider != null && collider.tag == "Enemy")
                 {
                     Destroy(collider.gameObject);
+                    EnemySlain();
                 }
             }
         }
