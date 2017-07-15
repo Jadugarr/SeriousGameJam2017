@@ -2,6 +2,7 @@
 {
     SmallPlatform,
     BigPlatform,
+    VeryBigPlatform,
     Slope,
     Quest1
 }

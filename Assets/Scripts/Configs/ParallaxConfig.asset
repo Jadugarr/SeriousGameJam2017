@@ -14,5 +14,5 @@ MonoBehaviour:
   Front_ParallaxSpeed: 5
   Mid_ParallaxSpeed: 2
   Back_ParallaxSpeed: 1
-  boundaryRight: 18
-  boundaryLeft: -18
+  boundaryRight: 34
+  boundaryLeft: -34

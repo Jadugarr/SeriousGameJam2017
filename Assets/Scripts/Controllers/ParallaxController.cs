@@ -69,11 +69,11 @@ public class ParallaxController : MonoBehaviour {
             frontParaArr[i].Translate(-currVel.x * paraConfig.Front_ParallaxSpeed * Time.deltaTime, 0f, 0f);
             if(frontParaArr[i].transform.localPosition.x > paraConfig.boundaryRight)
             {
-                frontParaArr[i].transform.Translate(-48f, 0f, 0f);
+                frontParaArr[i].transform.Translate(-80f, 0f, 0f);
             }
             if (frontParaArr[i].transform.localPosition.x < paraConfig.boundaryLeft)
             {
-                frontParaArr[i].transform.Translate(48f, 0f, 0f);
+                frontParaArr[i].transform.Translate(80f, 0f, 0f);
             }
         }
         for (int i = 0; i < midParaArr.Length; i++)
@@ -81,11 +81,11 @@ public class ParallaxController : MonoBehaviour {
             midParaArr[i].Translate(-currVel.x * paraConfig.Mid_ParallaxSpeed * Time.deltaTime, 0f, 0f);
             if (midParaArr[i].transform.localPosition.x > paraConfig.boundaryRight)
             {
-                midParaArr[i].transform.Translate(-48f, 0f, 0f);
+                midParaArr[i].transform.Translate(-80f, 0f, 0f);
             }
             if (midParaArr[i].transform.localPosition.x < paraConfig.boundaryLeft)
             {
-                midParaArr[i].transform.Translate(48f, 0f, 0f);
+                midParaArr[i].transform.Translate(80f, 0f, 0f);
             }
         }
         for (int i = 0; i < backParaArr.Length; i++)
@@ -93,11 +93,11 @@ public class ParallaxController : MonoBehaviour {
             backParaArr[i].Translate(-currVel.x * paraConfig.Back_ParallaxSpeed * Time.deltaTime, 0f, 0f);
             if (backParaArr[i].transform.localPosition.x > paraConfig.boundaryRight)
             {
-                backParaArr[i].transform.Translate(-48f, 0f, 0f);
+                backParaArr[i].transform.Translate(-80f, 0f, 0f);
             }
             if (backParaArr[i].transform.localPosition.x < paraConfig.boundaryLeft)
             {
-                backParaArr[i].transform.Translate(48f, 0f, 0f);
+                backParaArr[i].transform.Translate(80f, 0f, 0f);
             }
         }
     }
