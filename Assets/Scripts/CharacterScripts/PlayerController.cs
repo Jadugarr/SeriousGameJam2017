@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 input;
     private Animator playerAnimator;
 
+    private bool knockback = false;
     private bool startJump = false;
     private bool isAttacking = false;
 
@@ -26,10 +27,25 @@ public class PlayerController : MonoBehaviour
         eventManager.RegisterForEvent(EventTypes.JumpEvent, OnJump);
         eventManager.RegisterForEvent(EventTypes.AxisInputEvent, OnAxisInput);
         eventManager.RegisterForEvent(EventTypes.AttackInput, OnAttackInput);
+        eventManager.RegisterForEvent(EventTypes.PlayerHit, OnPlayerHit);
         controller = GetComponent<MovementController>();
         gravity = -(2 * charConfig.JumpHeight) / Mathf.Pow(charConfig.TimeToJumpMax, 2);
         jumpVelocity = Mathf.Abs(gravity) * charConfig.TimeToJumpMax;
         playerAnimator = GetComponent<Animator>();
+    }
+
+    void OnDestroy()
+    {
+        eventManager.RemoveFromEvent(EventTypes.JumpEvent, OnJump);
+        eventManager.RemoveFromEvent(EventTypes.AxisInputEvent, OnAxisInput);
+        eventManager.RemoveFromEvent(EventTypes.AttackInput, OnAttackInput);
+        eventManager.RemoveFromEvent(EventTypes.PlayerHit, OnPlayerHit);
+    }
+
+    private void OnPlayerHit(IEvent evt)
+    {
+        velocity.x = charConfig.KnockbackStrength.x;
+        knockback = true;
     }
 
     private void OnAxisInput(IEvent axisInputEvent)
@@ -66,12 +82,18 @@ public class PlayerController : MonoBehaviour
             velocity.y = jumpVelocity;
         }
 
+        if (knockback)
+        {
+            velocity.y = charConfig.KnockbackStrength.y;
+        }
+
         float targetVelocityX = input.x * charConfig.MovementSpeed;
         velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing,
             (controller.collisions.below) ? charConfig.AccelerationTimeGrounded : charConfig.AccelerationTimeAir);
         velocity.y += gravity * Time.deltaTime;
         controller.Move(new Vector3(velocity.x, velocity.y, 0f) * Time.deltaTime);
         startJump = false;
+        knockback = false;
         input = Vector2.zero;
     }
 

@@ -16,3 +16,4 @@ MonoBehaviour:
   TimeToJumpMax: 0.3
   AccelerationTimeGrounded: 0.1
   AccelerationTimeAir: 0.15
+  KnockbackStrength: {x: -15, y: 15}
