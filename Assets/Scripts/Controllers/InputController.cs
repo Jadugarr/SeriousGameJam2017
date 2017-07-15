@@ -14,7 +14,7 @@ public class InputController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxisRaw("Jump") > 0.1f)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             eventManager.FireEvent(EventTypes.JumpEvent, new JumpEvent());
         }

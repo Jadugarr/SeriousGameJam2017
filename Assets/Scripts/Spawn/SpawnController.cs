@@ -69,7 +69,7 @@ public class SpawnController : MonoBehaviour
         PlatformType typeToSpawn = platformComponent.PlatformType;
         GameObject spawnedGameObject;
 
-        moveThresholdToSpawn = platformComponent.platformWidth + Random.Range(0, 5);
+        moveThresholdToSpawn = platformComponent.platformWidth; // + Random.Range(0, 5);
 
         if (platformPool.ContainsKey(typeToSpawn))
         {
@@ -95,7 +95,7 @@ public class SpawnController : MonoBehaviour
                     spawnStart.position.y), spawnEnd.position.y)));
 
         spawnedGameObject.transform.SetPositionAndRotation(
-            new Vector3(Convert.ToInt32(Math.Floor(spawnStart.position.x + platformComponent.platformWidth / 2)),
+            new Vector3(Convert.ToInt32(Math.Floor(spawnStart.position.x + platformComponent.platformWidth / 2f)),
                 yPositionToSpawn, 0), objectToSpawn.transform.rotation);
 
         lastSpawnedPosition = spawnedGameObject.transform.position;
