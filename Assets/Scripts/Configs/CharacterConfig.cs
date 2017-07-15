@@ -10,4 +10,5 @@ public class CharacterConfig : ScriptableObject
     [SerializeField] public float TimeToJumpMax;
     [SerializeField] public float AccelerationTimeGrounded;
     [SerializeField] public float AccelerationTimeAir;
+    [SerializeField] public Vector2 KnockbackStrength;
 }
