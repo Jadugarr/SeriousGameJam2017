@@ -1,24 +1,27 @@
 fileFormatVersion: 2
-guid: 9cc2ea661dfede34d8e18245b48f874f
-timeCreated: 1500090295
+guid: 9dc7bb7befcf1114a8433d91539b347d
+timeCreated: 1500126642
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: demon_walk_0
-    21300002: demon_walk_1
-    21300004: demon_walk_2
-    21300006: demon_walk_3
-    21300008: demon_walk_4
-    21300010: demon_walk_5
-    21300012: demon_walk_6
-    21300014: demon_walk_7
-    21300016: demon_walk_8
-    21300018: demon_walk_9
+    21300000: protagonist_running_0
+    21300002: protagonist_running_1
+    21300004: protagonist_running_2
+    21300006: protagonist_running_3
+    21300008: protagonist_running_4
+    21300010: protagonist_running_5
+    21300012: protagonist_running_6
+    21300014: protagonist_running_7
+    21300016: protagonist_running_8
+    21300018: protagonist_running_9
+    21300020: protagonist_running_10
+    21300022: protagonist_running_11
+    21300024: protagonist_running_12
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
-    sRGBTexture: 1
+    sRGBTexture: 0
     linearTexture: 0
     fadeOut: 0
     borderMipMap: 0
@@ -40,17 +43,17 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: -1
     aniso: -1
     mipBias: -1
     wrapU: 1
     wrapV: 1
-    wrapW: -1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
-  spriteExtrude: 0
+  spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
@@ -81,33 +84,17 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-  - buildTarget: Android
-    maxTextureSize: 2048
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-  - buildTarget: WebGL
-    maxTextureSize: 2048
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: demon_walk_0
+      name: protagonist_running_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 120
-        width: 34
-        height: 40
+        y: 146
+        width: 46
+        height: 46
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,13 +102,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: demon_walk_1
+      name: protagonist_running_1
       rect:
         serializedVersion: 2
-        x: 34
-        y: 120
-        width: 34
-        height: 40
+        x: 71
+        y: 144
+        width: 46
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -129,13 +116,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: demon_walk_2
+      name: protagonist_running_2
       rect:
         serializedVersion: 2
-        x: 68
-        y: 120
-        width: 34
-        height: 40
+        x: 134
+        y: 144
+        width: 46
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,55 +130,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: demon_walk_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 80
-        width: 34
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: demon_walk_4
-      rect:
-        serializedVersion: 2
-        x: 34
-        y: 80
-        width: 34
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: demon_walk_5
-      rect:
-        serializedVersion: 2
-        x: 68
-        y: 80
-        width: 34
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: demon_walk_6
+      name: protagonist_running_3
       rect:
         serializedVersion: 2
         x: 0
-        y: 40
-        width: 34
-        height: 40
+        y: 96
+        width: 46
+        height: 47
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -199,27 +144,27 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: demon_walk_7
+      name: protagonist_running_4
       rect:
         serializedVersion: 2
-        x: 34
-        y: 40
-        width: 34
-        height: 40
+        x: 72
+        y: 96
+        width: 46
+        height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: demon_walk_8
+      name: protagonist_running_5
       rect:
         serializedVersion: 2
-        x: 68
-        y: 40
-        width: 34
-        height: 40
+        x: 135
+        y: 96
+        width: 46
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -227,13 +172,97 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: demon_walk_9
+      name: protagonist_running_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 51
+        width: 46
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: protagonist_running_7
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 48
+        width: 46
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: protagonist_running_8
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 48
+        width: 46
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: protagonist_running_9
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 96
+        width: 46
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: protagonist_running_10
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 34
-        height: 40
+        width: 46
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: protagonist_running_11
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 0
+        width: 46
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: protagonist_running_12
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 0
+        width: 47
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -7,7 +7,9 @@ public enum EventTypes
     AxisInputEvent,
     EnemyDirectionTriggered,
     AttackInput,
-    PlayerDirectionEvent
+    PlayerDirectionEvent,
+    PlayerSpotted,
+    PlayerHit
 }
 
 /// <summary>

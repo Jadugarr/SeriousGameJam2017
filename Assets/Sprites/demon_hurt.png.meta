@@ -1,15 +1,11 @@
 fileFormatVersion: 2
-guid: 886c0218a6ffdc54db0cfc4202cc4e98
-timeCreated: 1500095033
+guid: aa8f50b0c3b62c64db122fa200d21a0c
+timeCreated: 1500118491
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: protagonist_attack_0
-    21300002: protagonist_attack_1
-    21300004: protagonist_attack_2
-    21300006: protagonist_attack_3
-    21300008: protagonist_attack_4
-    21300010: protagonist_attack_5
+    21300000: demon_hurt_0
+    21300002: demon_hurt_1
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -41,12 +37,12 @@ TextureImporter:
     mipBias: -1
     wrapU: 1
     wrapV: 1
-    wrapW: -1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
-  spriteExtrude: 0
+  spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
@@ -77,89 +73,17 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-  - buildTarget: Android
-    maxTextureSize: 2048
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-  - buildTarget: WebGL
-    maxTextureSize: 2048
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: protagonist_attack_0
+      name: demon_hurt_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 128
-        width: 30
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: protagonist_attack_1
-      rect:
-        serializedVersion: 2
-        x: 69
-        y: 128
-        width: 30
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: protagonist_attack_2
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 64
-        width: 30
-        height: 57
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: protagonist_attack_3
-      rect:
-        serializedVersion: 2
-        x: 76
-        y: 64
-        width: 47
-        height: 55
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: protagonist_attack_4
-      rect:
-        serializedVersion: 2
-        x: 12
+        x: 0
         y: 0
-        width: 47
-        height: 54
+        width: 25
+        height: 38
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -167,13 +91,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: protagonist_attack_5
+      name: demon_hurt_1
       rect:
         serializedVersion: 2
-        x: 77
+        x: 26
         y: 0
-        width: 38
-        height: 46
+        width: 26
+        height: 38
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

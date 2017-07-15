@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: ba11ab7b6b328fa4ab586771bbc2624a
+timeCreated: 1500114649
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: BoereTudor
+  fontNames:
+  - BoereTudor
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
