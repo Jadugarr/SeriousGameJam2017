@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -15,6 +16,7 @@ public class SpawnController : MonoBehaviour
     private float currentThreshold;
     private Vector3 lastLevelPosition;
     private Vector3 lastSpawnedPosition;
+    private Dictionary<PlatformType, List<GameObject>> platformPool = new Dictionary<PlatformType, List<GameObject>>();
 
     public void Update()
     {
@@ -59,8 +61,19 @@ public class SpawnController : MonoBehaviour
         {
             lastSpawnedPosition = spawnStart.position;
         }
-
+        
         GameObject objectToSpawn = platformConfig.Platforms[Random.Range(0, platformConfig.Platforms.Length)];
+        PlatformType typeToSpawn = objectToSpawn.GetComponent<PlatformComponent>().PlatformType;
+
+
+        if (platformPool.ContainsKey(typeToSpawn))
+        {
+            if (platformPool[typeToSpawn].Count > 0)
+            {
+                
+            }
+        }
+
         int yPositionToSpawn =
             Convert.ToInt32(Math.Floor(Random.Range(
                 Mathf.Clamp(lastSpawnedPosition.y + characterConfig.JumpHeight, spawnEnd.position.y,
