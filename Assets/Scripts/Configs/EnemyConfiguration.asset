@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 201fcf23a1aecd34892283a2bbcb3ded, type: 3}
   m_Name: EnemyConfiguration
   m_EditorClassIdentifier: 
-  EnemySpawnChance: 0.2
+  EnemySpawnChance: 0.3
   PossibleEnemies:
   - EnemyPrefab: {fileID: 1688627622234296, guid: 0a9f83ca2bed96944ab9f6a7e73db3e5,
       type: 2}

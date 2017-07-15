@@ -132,6 +132,12 @@ public class SpawnController : MonoBehaviour
 
         if (evtArgs.ObjectToDestroy.CompareTag("Platform"))
         {
+            EnemyBehaviour enemy = evtArgs.ObjectToDestroy.GetComponentInChildren<EnemyBehaviour>();
+            if (enemy != null)
+            {
+                 Destroy(enemy.gameObject);
+            }
+
             PlatformComponent platformComponent = evtArgs.ObjectToDestroy.GetComponent<PlatformComponent>();
             evtArgs.ObjectToDestroy.SetActive(false);
             if (platformPool.ContainsKey(platformComponent.PlatformType))

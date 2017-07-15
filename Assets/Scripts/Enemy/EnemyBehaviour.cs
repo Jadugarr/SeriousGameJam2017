@@ -40,9 +40,7 @@ public class EnemyBehaviour : MonoBehaviour
             velocity.y = EnemyConfig.JumpVelocity;
         }
 
-        float targetVelocityX = direction * EnemyConfig.MovementSpeed;
-        velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing,
-            (controller.collisions.below) ? EnemyConfig.AccelerationTimeGrounded : EnemyConfig.AccelerationTimeAir);
+        velocity.x = direction * EnemyConfig.MovementSpeed;
         velocity.y += EnemyConfig.Gravity * Time.deltaTime;
         controller.Move(new Vector3(velocity.x, velocity.y, 0f) * Time.deltaTime);
         startJump = false;
