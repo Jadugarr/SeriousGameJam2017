@@ -4,5 +4,6 @@
     BigPlatform,
     VeryBigPlatform,
     Slope,
-    Quest1
+    Quest1,
+    Quest2
 }
