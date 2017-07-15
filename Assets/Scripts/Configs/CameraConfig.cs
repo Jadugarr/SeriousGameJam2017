@@ -8,6 +8,5 @@ public class CameraConfig : ScriptableObject
     [SerializeField] public float horizontalDelta;
     [SerializeField] public float verticalDelta;
     [SerializeField] public float dampFactor;
-    [SerializeField] public float camSlowSpeed;
-
+    [SerializeField] public float camSlowSpeed;    
 }

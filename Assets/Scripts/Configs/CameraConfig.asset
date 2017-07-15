@@ -14,5 +14,4 @@ MonoBehaviour:
   horizontalDelta: 1.5
   verticalDelta: 1.5
   dampFactor: 0.1
-  timeToFixPos: 0.8
   camSlowSpeed: 0.5
