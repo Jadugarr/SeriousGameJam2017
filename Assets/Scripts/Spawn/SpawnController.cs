@@ -64,14 +64,25 @@ public class SpawnController : MonoBehaviour
         
         GameObject objectToSpawn = platformConfig.Platforms[Random.Range(0, platformConfig.Platforms.Length)];
         PlatformType typeToSpawn = objectToSpawn.GetComponent<PlatformComponent>().PlatformType;
+        GameObject spawnedGameObject;
 
 
         if (platformPool.ContainsKey(typeToSpawn))
         {
             if (platformPool[typeToSpawn].Count > 0)
             {
-                
+                spawnedGameObject = platformPool[typeToSpawn][0];
+                spawnedGameObject.SetActive(true);
+                platformPool[typeToSpawn].Remove(spawnedGameObject);
             }
+            else
+            {
+                spawnedGameObject = Instantiate(objectToSpawn);
+            }
+        }
+        else
+        {
+            spawnedGameObject = Instantiate(objectToSpawn);
         }
 
         int yPositionToSpawn =
@@ -79,9 +90,7 @@ public class SpawnController : MonoBehaviour
                 Mathf.Clamp(lastSpawnedPosition.y + characterConfig.JumpHeight, spawnEnd.position.y,
                     spawnStart.position.y), spawnEnd.position.y)));
 
-        GameObject spawnedGameObject = Instantiate(objectToSpawn,
-            new Vector3(Convert.ToInt32(Math.Floor(spawnStart.position.x)), yPositionToSpawn, 0),
-            objectToSpawn.transform.rotation);
+        spawnedGameObject.transform.SetPositionAndRotation(new Vector3(Convert.ToInt32(Math.Floor(spawnStart.position.x)), yPositionToSpawn, 0), objectToSpawn.transform.rotation);
 
         lastSpawnedPosition = spawnedGameObject.transform.position;
 
@@ -123,7 +132,17 @@ public class SpawnController : MonoBehaviour
 
         if (evtArgs.ObjectToDestroy.CompareTag("Platform"))
         {
-            Destroy(evtArgs.ObjectToDestroy);
+            PlatformComponent platformComponent = evtArgs.ObjectToDestroy.GetComponent<PlatformComponent>();
+            evtArgs.ObjectToDestroy.SetActive(false);
+            if (platformPool.ContainsKey(platformComponent.PlatformType))
+            {
+                platformPool[platformComponent.PlatformType].Add(evtArgs.ObjectToDestroy);
+            }
+            else
+            {
+                platformPool.Add(platformComponent.PlatformType, new List<GameObject>());
+                platformPool[platformComponent.PlatformType].Add(evtArgs.ObjectToDestroy);
+            }
         }
     }
 }
