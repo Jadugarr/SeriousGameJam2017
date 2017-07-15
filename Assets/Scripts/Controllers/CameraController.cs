@@ -43,10 +43,10 @@ public class CameraController : MonoBehaviour {
             float deltaY = playerTransform.position.y - (this.transform.position.y - camConfig.horizontalDelta);
             this.transform.Translate(0f, deltaY, 0f);
         }
-        if ((playerTransform.position.y + this.transform.position.y) > camConfig.dampFactor)
+        /*if ((playerTransform.position.y + this.transform.position.y) > camConfig.dampFactor)
         {
             this.transform.Translate(0f, - Time.deltaTime * camConfig.camSlowSpeed, 0f);
         }
-
+        */
     }
 }
