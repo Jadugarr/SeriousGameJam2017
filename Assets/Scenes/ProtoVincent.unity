@@ -922,48 +922,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 15c47c94a340f264c954575480e8e1af, type: 2}
   m_IsPrefabParent: 0
---- !u!1001 &1322258883
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4612575866365560, guid: 34ab16fcc66599d45be05695e50d04ae, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4612575866365560, guid: 34ab16fcc66599d45be05695e50d04ae, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4612575866365560, guid: 34ab16fcc66599d45be05695e50d04ae, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4612575866365560, guid: 34ab16fcc66599d45be05695e50d04ae, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4612575866365560, guid: 34ab16fcc66599d45be05695e50d04ae, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4612575866365560, guid: 34ab16fcc66599d45be05695e50d04ae, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4612575866365560, guid: 34ab16fcc66599d45be05695e50d04ae, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4612575866365560, guid: 34ab16fcc66599d45be05695e50d04ae, type: 2}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 34ab16fcc66599d45be05695e50d04ae, type: 2}
-  m_IsPrefabParent: 0
 --- !u!4 &1339318346 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4654775108535472, guid: 15c47c94a340f264c954575480e8e1af,
