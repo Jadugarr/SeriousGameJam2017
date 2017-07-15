@@ -1621,8 +1621,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3281e7d99e3be34db80c1c4f4b00345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlatformType: 3
-  platformWidth: 13
+  PlatformType: 4
+  platformWidth: 15
 --- !u!135 &135503232939134926
 SphereCollider:
   m_ObjectHideFlags: 1
