@@ -17,7 +17,6 @@ public class SpawnController : MonoBehaviour
     private float currentThreshold;
     private Vector3 lastLevelPosition;
     private Vector3 lastSpawnedPosition;
-    private Dictionary<PlatformType, List<GameObject>> platformPool = new Dictionary<PlatformType, List<GameObject>>();
 
     public void FixedUpdate()
     {
@@ -70,24 +69,7 @@ public class SpawnController : MonoBehaviour
 
         moveThresholdToSpawn = platformComponent.platformWidth; // + Random.Range(0, 5);
 
-        if (platformPool.ContainsKey(typeToSpawn))
-        {
-            if (platformPool[typeToSpawn].Count > 0)
-            {
-                spawnedGameObject = platformPool[typeToSpawn][0];
-                spawnedGameObject.SetActive(true);
-                spawnedGameObject.GetComponent<PlatformComponent>().Activate();
-                platformPool[typeToSpawn].Remove(spawnedGameObject);
-            }
-            else
-            {
-                spawnedGameObject = Instantiate(objectToSpawn);
-            }
-        }
-        else
-        {
-            spawnedGameObject = Instantiate(objectToSpawn);
-        }
+        spawnedGameObject = Instantiate(objectToSpawn);
 
         int yMax = Convert.ToInt32(Math.Floor(Mathf.Clamp(lastSpawnedPosition.y + characterConfig.JumpHeight - 1,
             spawnEnd.position.y,
@@ -137,26 +119,12 @@ public class SpawnController : MonoBehaviour
     private void OnDestructionZoneEntered(IEvent args)
     {
         EnteredDestructionZoneEvent evtArgs = (EnteredDestructionZoneEvent) args;
-
-        if (evtArgs.ObjectToDestroy.CompareTag("Platform"))
+        EnemyBehaviour enemy = evtArgs.ObjectToDestroy.GetComponentInChildren<EnemyBehaviour>();
+        if (enemy != null)
         {
-            EnemyBehaviour enemy = evtArgs.ObjectToDestroy.GetComponentInChildren<EnemyBehaviour>();
-            if (enemy != null)
-            {
-                Destroy(enemy.gameObject);
-            }
-
-            PlatformComponent platformComponent = evtArgs.ObjectToDestroy.GetComponent<PlatformComponent>();
-            evtArgs.ObjectToDestroy.SetActive(false);
-            if (platformPool.ContainsKey(platformComponent.PlatformType))
-            {
-                platformPool[platformComponent.PlatformType].Add(evtArgs.ObjectToDestroy);
-            }
-            else
-            {
-                platformPool.Add(platformComponent.PlatformType, new List<GameObject>());
-                platformPool[platformComponent.PlatformType].Add(evtArgs.ObjectToDestroy);
-            }
+            Destroy(enemy.gameObject);
         }
+
+        Destroy(evtArgs.ObjectToDestroy);
     }
 }
