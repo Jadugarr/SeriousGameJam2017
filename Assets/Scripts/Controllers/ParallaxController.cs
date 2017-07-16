@@ -8,7 +8,8 @@ public class ParallaxController : MonoBehaviour {
 
     public Transform[] frontParaArr;
     public Transform[] midParaArr;
-    public Transform[] backParaArr;
+    public Transform nightObject;
+    public Transform skyObject;
 
     public Sprite frontDark;
     public Sprite midDark;
@@ -39,7 +40,7 @@ public class ParallaxController : MonoBehaviour {
     void Start () {
         //eventManager.RegisterForEvent(EventTypes.AxisInputEvent, PlayerDirEvent);
         cam = GameObject.FindGameObjectWithTag("Camera");
-        particleSystem2.gameObject.SetActive(true);
+        particleSystem2.gameObject.SetActive(false);
         eventManager.RegisterForEvent(EventTypes.ProgStepChangeEvent, ProgStepChange);
         frontTileMostRight = frontParaArr[frontParaArr.Length - 1];
         midTileMostRight = midParaArr[midParaArr.Length - 1];
@@ -103,30 +104,42 @@ public class ParallaxController : MonoBehaviour {
         } else if(transToNice)
         {
             transAcc += Time.deltaTime;
-            if(transAcc > transTime)
+            if (transAcc > transTime)
             {
                 transAcc = 0f;
                 var main = particleSystem.main;
                 transToNice = false;
-            }
-            for (int i = 0; i < midParaArr.Length; i++)
-            {
-                midParaArr[i].Translate(-transMultiply * paraConfig.Mid_ParallaxSpeed * Time.deltaTime, 0f, 0f);
-                if (midParaArr[i].transform.localPosition.x < paraConfig.boundaryLeft)
+                nightObject.transform.localPosition = new Vector3(63.3f, 0f, 0f);
+                skyObject.transform.localPosition = new Vector3(-.7f, 0f, 0f);
+                for (int i = 0; i < midParaArr.Length; i++)
                 {
-                    midParaArr[i].transform.Translate(80f, 0f, 0f);
-                    midTileMostRight = midParaArr[i];
-                    midTileMostRight.GetComponent<SpriteRenderer>().sprite = midNice;
+                    midParaArr[i].GetComponent<SpriteRenderer>().sprite = midNice;
+                    frontParaArr[i].GetComponent<SpriteRenderer>().sprite = frontNice;
                 }
             }
-            for (int i = 0; i < frontParaArr.Length; i++)
+            else
             {
-                frontParaArr[i].Translate(-transMultiply * paraConfig.Mid_ParallaxSpeed * Time.deltaTime, 0f, 0f);
-                if (frontParaArr[i].transform.localPosition.x < paraConfig.boundaryLeft)
+                nightObject.Translate(-transMultiply * paraConfig.Mid_ParallaxSpeed * Time.deltaTime, 0f, 0f);
+                skyObject.Translate(-transMultiply * paraConfig.Mid_ParallaxSpeed * Time.deltaTime, 0f, 0f);
+                for (int i = 0; i < midParaArr.Length; i++)
                 {
-                    frontParaArr[i].transform.Translate(80f, 0f, 0f);
-                    frontTileMostRight = frontParaArr[i];
-                    frontTileMostRight.GetComponent<SpriteRenderer>().sprite = frontNice;
+                    midParaArr[i].Translate(-transMultiply * paraConfig.Mid_ParallaxSpeed * Time.deltaTime, 0f, 0f);
+                    if (midParaArr[i].transform.localPosition.x < paraConfig.boundaryLeft)
+                    {
+                        midParaArr[i].transform.Translate(80f, 0f, 0f);
+                        midTileMostRight = midParaArr[i];
+                        midTileMostRight.GetComponent<SpriteRenderer>().sprite = midNice;
+                    }
+                }
+                for (int i = 0; i < frontParaArr.Length; i++)
+                {
+                    frontParaArr[i].Translate(-transMultiply * paraConfig.Mid_ParallaxSpeed * Time.deltaTime, 0f, 0f);
+                    if (frontParaArr[i].transform.localPosition.x < paraConfig.boundaryLeft)
+                    {
+                        frontParaArr[i].transform.Translate(80f, 0f, 0f);
+                        frontTileMostRight = frontParaArr[i];
+                        frontTileMostRight.GetComponent<SpriteRenderer>().sprite = frontNice;
+                    }
                 }
             }
         } else if(transToDark)
@@ -137,25 +150,37 @@ public class ParallaxController : MonoBehaviour {
                 transAcc = 0f;
                 var main = particleSystem.main;
                 transToDark = false;
-            }
-            for (int i = 0; i < midParaArr.Length; i++)
-            {
-                midParaArr[i].Translate(-transMultiply * paraConfig.Mid_ParallaxSpeed * Time.deltaTime, 0f, 0f);
-                if (midParaArr[i].transform.localPosition.x < paraConfig.boundaryLeft)
+                skyObject.transform.localPosition = new Vector3(63.3f, 0f, 0f);
+                nightObject.transform.localPosition = new Vector3(-.7f, 0f, 0f);
+                for(int i = 0;i < midParaArr.Length; i++)
                 {
-                    midParaArr[i].transform.Translate(80f, 0f, 0f);
-                    midTileMostRight = midParaArr[i];
-                    midTileMostRight.GetComponent<SpriteRenderer>().sprite = midDark;
+                    midParaArr[i].GetComponent<SpriteRenderer>().sprite = midDark;
+                    frontParaArr[i].GetComponent<SpriteRenderer>().sprite = frontDark;
                 }
             }
-            for (int i = 0; i < frontParaArr.Length; i++)
+            else
             {
-                frontParaArr[i].Translate(-transMultiply * paraConfig.Mid_ParallaxSpeed * Time.deltaTime, 0f, 0f);
-                if (frontParaArr[i].transform.localPosition.x < paraConfig.boundaryLeft)
+                nightObject.Translate(-transMultiply * paraConfig.Mid_ParallaxSpeed * Time.deltaTime, 0f, 0f);
+                skyObject.Translate(-transMultiply * paraConfig.Mid_ParallaxSpeed * Time.deltaTime, 0f, 0f);
+                for (int i = 0; i < midParaArr.Length; i++)
                 {
-                    frontParaArr[i].transform.Translate(80f, 0f, 0f);
-                    frontTileMostRight = frontParaArr[i];
-                    frontTileMostRight.GetComponent<SpriteRenderer>().sprite = frontDark;
+                    midParaArr[i].Translate(-transMultiply * paraConfig.Mid_ParallaxSpeed * Time.deltaTime, 0f, 0f);
+                    if (midParaArr[i].transform.localPosition.x < paraConfig.boundaryLeft)
+                    {
+                        midParaArr[i].transform.Translate(80f, 0f, 0f);
+                        midTileMostRight = midParaArr[i];
+                        midTileMostRight.GetComponent<SpriteRenderer>().sprite = midDark;
+                    }
+                }
+                for (int i = 0; i < frontParaArr.Length; i++)
+                {
+                    frontParaArr[i].Translate(-transMultiply * paraConfig.Mid_ParallaxSpeed * Time.deltaTime, 0f, 0f);
+                    if (frontParaArr[i].transform.localPosition.x < paraConfig.boundaryLeft)
+                    {
+                        frontParaArr[i].transform.Translate(80f, 0f, 0f);
+                        frontTileMostRight = frontParaArr[i];
+                        frontTileMostRight.GetComponent<SpriteRenderer>().sprite = frontDark;
+                    }
                 }
             }
         }

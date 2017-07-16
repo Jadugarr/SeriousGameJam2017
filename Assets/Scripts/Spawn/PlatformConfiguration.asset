@@ -14,3 +14,9 @@ MonoBehaviour:
   ChanceToSpawnGap: 0.1
   Platforms:
   - {fileID: 1992435811819432, guid: dd15c74f7c72c7241bdb568aa36369b6, type: 2}
+  - {fileID: 1937294366760040, guid: 4a03d39e8d108514e9e9332837df317f, type: 2}
+  - {fileID: 1049398771446934, guid: 7d8c9b43344cd2b4190269bd642c171c, type: 2}
+  - {fileID: 1327055599064918, guid: d85b2b3d728c34f47a4fe395c3b224e5, type: 2}
+  - {fileID: 1340341710593896, guid: 15e1e06c2066f4c41b119efaa471068a, type: 2}
+  - {fileID: 1021208674516306, guid: 8ac0a821aa9e10f4aa8815f46bc1a19f, type: 2}
+  - {fileID: 1992435811819432, guid: 809b4baf0ec602049b1558cb6d35f3f1, type: 2}
