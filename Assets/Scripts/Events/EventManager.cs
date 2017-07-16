@@ -11,6 +11,7 @@ public enum EventTypes
     PlayerSpotted,
     PlayerHit,
     PlayerPassedCheckpoint
+	EndSequenceEvent
 }
 
 /// <summary>
