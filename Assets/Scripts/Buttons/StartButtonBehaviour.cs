@@ -6,6 +6,11 @@ public class StartButtonBehaviour : MonoBehaviour
 {
     private Button button;
 
+	[SerializeField]
+	protected IntroFadeOut fadeScene;
+
+	protected bool wasClicked = false;
+
     // Use this for initialization
     void Start()
     {
@@ -20,6 +25,10 @@ public class StartButtonBehaviour : MonoBehaviour
 
     private void OnButtonClick()
     {
-        SceneManager.LoadScene(1);
+		if(!wasClicked)
+		{
+			fadeScene.startSequence();
+			wasClicked = true;
+		}
     }
 }
