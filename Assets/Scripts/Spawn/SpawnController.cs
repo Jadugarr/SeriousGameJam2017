@@ -12,6 +12,7 @@ public class SpawnController : MonoBehaviour
     [SerializeField] private EnemyConfig enemyConfig;
     [SerializeField] private GameObject playerGameObject;
     [SerializeField] private float moveThresholdToSpawn;
+    [SerializeField] private GameObject endArea;
 
     private EventManager eventManager = EventManager.Instance;
     private float currentThreshold;
