@@ -36,21 +36,21 @@ public class InputController : MonoBehaviour
             eventManager.FireEvent(EventTypes.AttackInput, new AttackInputEvent());
         }
 
-        //if (Input.GetKeyDown(KeyCode.F))
-        //{
-        //    eventManager.FireEvent(EventTypes.ProgStepChangeEvent, new ProgStepChangeEvent(0));
-        //}
-        //if (Input.GetKeyDown(KeyCode.G))
-        //{
-        //    eventManager.FireEvent(EventTypes.ProgStepChangeEvent, new ProgStepChangeEvent(1));
-        //}
-        //if (Input.GetKeyDown(KeyCode.H))
-        //{
-        //    eventManager.FireEvent(EventTypes.ProgStepChangeEvent, new ProgStepChangeEvent(2));
-        //}
-        //if (Input.GetKeyDown(KeyCode.J))
-        //{
-        //    eventManager.FireEvent(EventTypes.ProgStepChangeEvent, new ProgStepChangeEvent(3));
-        //}
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            eventManager.FireEvent(EventTypes.ProgStepChangeEvent, new ProgStepChangeEvent(0));
+        }
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            eventManager.FireEvent(EventTypes.ProgStepChangeEvent, new ProgStepChangeEvent(1));
+        }
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            eventManager.FireEvent(EventTypes.ProgStepChangeEvent, new ProgStepChangeEvent(2));
+        }
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            eventManager.FireEvent(EventTypes.ProgStepChangeEvent, new ProgStepChangeEvent(3));
+        }
     }
 }

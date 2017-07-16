@@ -5,6 +5,8 @@ public class AudioController : MonoBehaviour
 {
     [SerializeField] private AudioSource[] loopSources;
     [SerializeField] private float blendTime;
+    [SerializeField] private AudioSource pillSound;
+    [SerializeField] private AudioSource enemyKilledSound;
 
     private EventManager eventManager = EventManager.Instance;
 
@@ -19,12 +21,26 @@ public class AudioController : MonoBehaviour
     void Start()
     {
         eventManager.RegisterForEvent(EventTypes.ProgStepChangeEvent, OnNewProgress);
+        eventManager.RegisterForEvent(EventTypes.EnemyHit, OnEnemyKilled);
+        eventManager.RegisterForEvent(EventTypes.PillTaken, OnPowerPillTaken);
         currentActiveSource = loopSources[0];
     }
 
     void OnDestroy()
     {
         eventManager.RemoveFromEvent(EventTypes.ProgStepChangeEvent, OnNewProgress);
+        eventManager.RemoveFromEvent(EventTypes.EnemyHit, OnEnemyKilled);
+        eventManager.RemoveFromEvent(EventTypes.PillTaken, OnPowerPillTaken);
+    }
+
+    private void OnPowerPillTaken(IEvent evt)
+    {
+        pillSound.Play();
+    }
+
+    private void OnEnemyKilled(IEvent evt)
+    {
+        enemyKilledSound.Play();
     }
 
     // Update is called once per frame

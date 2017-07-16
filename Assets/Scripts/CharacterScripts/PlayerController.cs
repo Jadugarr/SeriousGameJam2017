@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
 
     //PLAYERGAMELOGIC
     private int currentProgress = 5;
+
     private int currentProgStep = 0;
     private float currentSpeed = 0;
     private float progLossAcc = 0f;
@@ -51,7 +52,7 @@ public class PlayerController : MonoBehaviour
 
     void OnDestroy()
     {
-	eventManager.RemoveFromEvent(EventTypes.JumpEvent, OnJump);
+        eventManager.RemoveFromEvent(EventTypes.JumpEvent, OnJump);
         eventManager.RemoveFromEvent(EventTypes.AxisInputEvent, OnAxisInput);
         eventManager.RemoveFromEvent(EventTypes.AttackInput, OnAttackInput);
         eventManager.RemoveFromEvent(EventTypes.PlayerHit, OnPlayerHit);
@@ -77,7 +78,7 @@ public class PlayerController : MonoBehaviour
                 currentProgStep = 4;
             }
             currentSpeed = charConfig.MovementSpeed90;
-        } 
+        }
         else if (currentProgress >= 60)
         {
             if (currentProgStep != 4)
@@ -96,7 +97,7 @@ public class PlayerController : MonoBehaviour
             }
             currentSpeed = charConfig.MovementSpeed30;
         }
-        else if(currentProgress >= 10)
+        else if (currentProgress >= 10)
         {
             if (currentProgStep != 1)
             {
@@ -105,7 +106,7 @@ public class PlayerController : MonoBehaviour
             }
             currentSpeed = charConfig.MovementSpeed10;
         }
-        else if(currentProgress < 10)
+        else if (currentProgress < 10)
         {
             if (currentProgStep != 0)
             {
@@ -114,9 +115,10 @@ public class PlayerController : MonoBehaviour
             }
             currentSpeed = charConfig.MovementSpeed0;
         }
-        progressHelm.rectTransform.localPosition = new Vector3(-280f + ((560f/100f) * currentProgress), progressHelm.rectTransform.localPosition.y, progressHelm.rectTransform.localPosition.z);
+        progressHelm.rectTransform.localPosition = new Vector3(-280f + ((560f / 100f) * currentProgress),
+            progressHelm.rectTransform.localPosition.y, progressHelm.rectTransform.localPosition.z);
     }
-    
+
     public Vector2 GetPlayerVel()
     {
         return velocity;
@@ -129,12 +131,14 @@ public class PlayerController : MonoBehaviour
 
     public void PowerPillTaken()
     {
+        eventManager.FireEvent(EventTypes.PillTaken, new PowerPillTakenEvent());
         currentProgress += charConfig.progressPerPill;
         UpdateProgressBar();
     }
 
     private void EnemySlain()
     {
+        eventManager.FireEvent(EventTypes.EnemyHit, new EnemyHitEvent());
         currentProgress += charConfig.progressPerEnemySlain;
         UpdateProgressBar();
     }
@@ -160,7 +164,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnJump(IEvent jumpEvent)
     {
-        JumpInputType inputType = ((JumpEvent)jumpEvent).jumpInputType;
+        JumpInputType inputType = ((JumpEvent) jumpEvent).jumpInputType;
 
         if (controller.collisions.below && ableToJump && inputType == JumpInputType.jumpDown)
         {
@@ -181,7 +185,7 @@ public class PlayerController : MonoBehaviour
                 ableToAddJump = false;
             }
         }
-        if(!ableToJump && inputType == JumpInputType.jumpRelease)
+        if (!ableToJump && inputType == JumpInputType.jumpRelease)
         {
             ableToJump = true;
             ableToAddJump = false;
@@ -225,7 +229,7 @@ public class PlayerController : MonoBehaviour
 
         if (knockback)
         {
-     //       velocity.y = charConfig.KnockbackStrength.y;
+            //       velocity.y = charConfig.KnockbackStrength.y;
         }
 
         float targetVelocityX = input.x * currentSpeed;
@@ -240,6 +244,7 @@ public class PlayerController : MonoBehaviour
 
     public void Attack()
     {
+        eventManager.FireEvent(EventTypes.PlayerAttack, new PlayerAttackEvent());
         Collider2D[] results = new Collider2D[5];
         if (swordCollider.OverlapCollider(new ContactFilter2D().NoFilter(), results) > 0)
         {
