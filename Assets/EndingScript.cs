@@ -31,10 +31,18 @@ public class EndingScript : MonoBehaviour {
 	[SerializeField]
 	protected float fadeOutTime;
 
+	[SerializeField]
+	protected AudioSource clangSound;
 
 	private int phase = 0;
 	float startTimestamp;
 	float endTimestamp;
+
+	public void PlayClangSound()
+	{
+		clangSound.pitch = Random.Range(0.5f, 1.5f);
+		clangSound.Play();
+	}
 
 	// Use this for initialization
 	void Awake () {
@@ -58,7 +66,14 @@ public class EndingScript : MonoBehaviour {
 		{
 			cameraMove();
 		}
-		else if( phase == 4)
+		else if( phase == 4 && (
+			Input.GetAxis("Fire1") > 0f 
+			|| Input.GetAxis("Fire2") > 0f
+			|| Input.GetAxis("Jump") > 0f))
+		{
+			phase = 5;
+		}
+		else if( phase == 5)
 		{
 			fadeOut();
 		}
