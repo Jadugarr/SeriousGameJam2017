@@ -18,7 +18,7 @@ MonoBehaviour:
   MovementSpeed60: 16
   MovementSpeed90: 20
   MovementSpeed100: 24
-  TimeToJumpMax: 0.2
+  TimeToJumpMax: 0.25
   AccelerationTimeGrounded: 0.05
   AccelerationTimeAir: 0.05
   KnockbackStrength: {x: -15, y: 15}
@@ -26,5 +26,5 @@ MonoBehaviour:
   progressLossPerFall: 10
   progressPerEnemySlain: 30
   progressLossPerHitTaken: 10
-  lossPerTimeSpeed: 0.5
-  jumpTime: 0.2
+  lossPerTimeSpeed: 3
+  jumpTime: 0.25
