@@ -12228,7 +12228,6 @@ SpriteRenderer:
 --- !u!1 &1961360701
 GameObject:
   m_ObjectHideFlags: 0
-<<<<<<< HEAD
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
@@ -12395,7 +12394,6 @@ GameObject:
   - component: {fileID: 1260689588}
   m_Layer: 0
   m_Name: Particle System (1)
-=======
   m_PrefabParentObject: {fileID: 1200355294971930, guid: 8ac0a821aa9e10f4aa8815f46bc1a19f,
     type: 2}
   m_PrefabInternal: {fileID: 0}
@@ -12405,13 +12403,11 @@ GameObject:
   - component: {fileID: 1961360703}
   m_Layer: 8
   m_Name: LeftBottom
->>>>>>> bcc4fa0d733a926557281926ddf6720df3a55349
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
 --- !u!4 &1260689587
 Transform:
   m_ObjectHideFlags: 0
