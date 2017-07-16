@@ -30,8 +30,8 @@ public class RespawnController : MonoBehaviour
     {
         if (playerGameObject.transform.position.y <= respawnMarker.transform.position.y)
         {
-            playerGameObject.transform.position = new Vector3(currentCheckpoint.transform.position.x,
-                currentCheckpoint.transform.position.y, currentCheckpoint.transform.position.z);
+            playerGameObject.transform.position = currentCheckpoint.transform.position;
+            eventManager.FireEvent(EventTypes.PlayerRespawned, new PlayerRespawnedEvent());
         }
     }
 }
