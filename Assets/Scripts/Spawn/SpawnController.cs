@@ -67,7 +67,14 @@ public class SpawnController : MonoBehaviour
         PlatformType typeToSpawn = platformComponent.PlatformType;
         GameObject spawnedGameObject;
 
-        moveThresholdToSpawn = platformComponent.platformWidth; // + Random.Range(0, 5);
+        int randomNumber = Random.Range(1, 101);
+
+        moveThresholdToSpawn = platformComponent.platformWidth;
+
+        if (randomNumber <= platformConfig.ChanceToSpawnGap * 100)
+        {
+            moveThresholdToSpawn += Random.Range(1, 4);
+        }
 
         spawnedGameObject = Instantiate(objectToSpawn);
 
