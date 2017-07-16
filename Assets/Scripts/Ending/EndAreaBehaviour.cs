@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EndAreaBehaviour : MonoBehaviour
 {
@@ -6,7 +7,7 @@ public class EndAreaBehaviour : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            // SceneManager.LoadScene(2);
+            SceneManager.LoadScene(2);
         }
     }
 }
