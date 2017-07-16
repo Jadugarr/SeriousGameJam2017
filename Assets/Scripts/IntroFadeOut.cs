@@ -39,6 +39,12 @@ public class IntroFadeOut : MonoBehaviour {
 	[SerializeField]
 	protected Button startButton;
 
+	[SerializeField]
+	protected AudioSource windSound;
+
+	[SerializeField]
+	protected AudioSource thumpSound;
+
 	protected float endTimeStamp = -1f;
 	protected float fallingTimeStamp = -1;
 	protected float fadeStartTimeStamp = -1;
@@ -110,6 +116,7 @@ public class IntroFadeOut : MonoBehaviour {
 		endTimeStamp = Time.realtimeSinceStartup;
 		fadeStartTimeStamp = -1f;
 		fade.alpha = 1f;
+		windSound.Stop();
 	}
 
 	protected void endProgress()
@@ -122,7 +129,7 @@ public class IntroFadeOut : MonoBehaviour {
 		else if( !thumpSoundPlayed && passedSecs >= timeUntilThumpSound)
 		{
 			thumpSoundPlayed = true;
-			// todo thump
+			thumpSound.Play();
 		}
 	}
 
@@ -143,6 +150,7 @@ public class IntroFadeOut : MonoBehaviour {
 			}
 
 			fade.alpha = progress;
+			windSound.volume = 1f - progress;
 		}
 	}
 }
