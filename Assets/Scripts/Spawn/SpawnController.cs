@@ -18,6 +18,7 @@ public class SpawnController : MonoBehaviour
     private float currentThreshold;
     private Vector3 lastLevelPosition;
     private Vector3 lastSpawnedPosition;
+    private GameObject nextObjectToSpawn = null;
 
     public void FixedUpdate()
     {
@@ -49,11 +50,23 @@ public class SpawnController : MonoBehaviour
     private void AddEventListeners()
     {
         eventManager.RegisterForEvent(EventTypes.EnteredDestructionZone, OnDestructionZoneEntered);
+        eventManager.RegisterForEvent(EventTypes.ProgStepChangeEvent, OnProgStep);
     }
 
     private void RemoveEventListeners()
     {
         eventManager.RemoveFromEvent(EventTypes.EnteredDestructionZone, OnDestructionZoneEntered);
+        eventManager.RemoveFromEvent(EventTypes.ProgStepChangeEvent, OnProgStep);
+    }
+
+    private void OnProgStep(IEvent evt)
+    {
+        ProgStepChangeEvent evtArgs = (ProgStepChangeEvent) evt;
+
+        if (evtArgs.progStep == 5)
+        {
+            nextObjectToSpawn = endArea;
+        }
     }
 
     private void SpawnPlatform()
@@ -63,7 +76,7 @@ public class SpawnController : MonoBehaviour
             lastSpawnedPosition = spawnStart.position;
         }
 
-        GameObject objectToSpawn = platformConfig.Platforms[Random.Range(0, platformConfig.Platforms.Length)];
+        GameObject objectToSpawn = nextObjectToSpawn == null ? platformConfig.Platforms[Random.Range(0, platformConfig.Platforms.Length)] : endArea;
         PlatformComponent platformComponent = objectToSpawn.GetComponent<PlatformComponent>();
         PlatformType typeToSpawn = platformComponent.PlatformType;
         GameObject spawnedGameObject;
@@ -91,6 +104,7 @@ public class SpawnController : MonoBehaviour
 
         lastSpawnedPosition = spawnedGameObject.transform.position;
         gameObject.transform.Translate(new Vector3(moveThresholdToSpawn, 1, 0));
+        nextObjectToSpawn = null;
 
         SpawnEnemy(spawnedGameObject);
     }
