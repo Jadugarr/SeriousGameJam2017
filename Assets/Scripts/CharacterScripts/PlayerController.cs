@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     private int currentProgress = 5;
     private int currentProgStep = 0;
     private float currentSpeed = 0;
+    private float progLossAcc = 0f;
 
     MovementController controller;
 
@@ -174,6 +175,19 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (velocity.x < 0.1f)
+        {
+            progLossAcc += Time.deltaTime;
+            if (progLossAcc > charConfig.lossPerTimeSpeed)
+            {
+                currentProgress -= 1;
+                progLossAcc = 0f;
+                UpdateProgressBar();
+            }
+        }
+
+        currentProgress = Mathf.Clamp(currentProgress, 0, 101);
+
         Mathf.Clamp(currentProgress, 0, 100);
         if (controller.collisions.above || controller.collisions.below)
         {
