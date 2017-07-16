@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: CharacterConfiguration
   m_EditorClassIdentifier: 
   JumpHeight: 4
-  MovementSpeed0: 8
+  MovementSpeed0: 6
   MovementSpeed10: 10
   MovementSpeed30: 12
   MovementSpeed60: 16
@@ -24,6 +24,6 @@ MonoBehaviour:
   KnockbackStrength: {x: -15, y: 15}
   progressPerPill: 5
   progressLossPerFall: 10
-  progressPerEnemySlain: 15
+  progressPerEnemySlain: 2
   progressLossPerHitTaken: 10
   jumpTime: 0
