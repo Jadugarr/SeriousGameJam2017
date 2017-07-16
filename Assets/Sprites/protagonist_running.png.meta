@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 9dc7bb7befcf1114a8433d91539b347d
-timeCreated: 1500126642
+timeCreated: 1500197411
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -92,9 +92,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 146
-        width: 46
-        height: 46
+        y: 144
+        width: 64
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -105,9 +105,9 @@ TextureImporter:
       name: protagonist_running_1
       rect:
         serializedVersion: 2
-        x: 71
+        x: 64
         y: 144
-        width: 46
+        width: 64
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -119,9 +119,9 @@ TextureImporter:
       name: protagonist_running_2
       rect:
         serializedVersion: 2
-        x: 134
+        x: 128
         y: 144
-        width: 46
+        width: 64
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -135,8 +135,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 96
-        width: 46
-        height: 47
+        width: 64
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,12 +147,12 @@ TextureImporter:
       name: protagonist_running_4
       rect:
         serializedVersion: 2
-        x: 72
+        x: 64
         y: 96
-        width: 46
+        width: 64
         height: 48
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -161,9 +161,9 @@ TextureImporter:
       name: protagonist_running_5
       rect:
         serializedVersion: 2
-        x: 135
+        x: 128
         y: 96
-        width: 46
+        width: 64
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -176,9 +176,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 51
-        width: 46
-        height: 46
+        y: 48
+        width: 64
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -189,10 +189,10 @@ TextureImporter:
       name: protagonist_running_7
       rect:
         serializedVersion: 2
-        x: 71
+        x: 64
         y: 48
-        width: 46
-        height: 47
+        width: 64
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,10 +203,10 @@ TextureImporter:
       name: protagonist_running_8
       rect:
         serializedVersion: 2
-        x: 134
+        x: 128
         y: 48
-        width: 46
-        height: 47
+        width: 64
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -217,10 +217,10 @@ TextureImporter:
       name: protagonist_running_9
       rect:
         serializedVersion: 2
-        x: 132
-        y: 96
-        width: 46
-        height: 47
+        x: 0
+        y: 0
+        width: 64
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -231,10 +231,10 @@ TextureImporter:
       name: protagonist_running_10
       rect:
         serializedVersion: 2
-        x: 0
+        x: 64
         y: 0
-        width: 46
-        height: 49
+        width: 64
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -245,23 +245,9 @@ TextureImporter:
       name: protagonist_running_11
       rect:
         serializedVersion: 2
-        x: 67
+        x: 128
         y: 0
-        width: 46
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: protagonist_running_12
-      rect:
-        serializedVersion: 2
-        x: 133
-        y: 0
-        width: 47
+        width: 64
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}

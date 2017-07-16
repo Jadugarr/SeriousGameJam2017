@@ -11,3 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ProtoMovement.unity
     guid: 9011d85c6ac1b384aa70301b4d792d90
+  - enabled: 1
+    path: Assets/Scenes/Ending.unity
+    guid: 32c7c150855a8a14e82435826d2574fc
