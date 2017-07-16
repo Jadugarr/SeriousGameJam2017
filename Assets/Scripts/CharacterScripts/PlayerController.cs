@@ -97,6 +97,11 @@ public class PlayerController : MonoBehaviour
         return velocity;
     }
 
+    public MovementController GetMovController()
+    {
+        return controller;
+    }
+
     public void PowerPillTaken()
     {
         currentProgress += charConfig.progressPerPill;
