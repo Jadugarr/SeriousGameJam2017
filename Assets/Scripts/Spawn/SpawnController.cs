@@ -19,6 +19,7 @@ public class SpawnController : MonoBehaviour
     private Vector3 lastLevelPosition;
     private Vector3 lastSpawnedPosition;
     private GameObject nextObjectToSpawn = null;
+    private bool endSpawned = false;
 
     public void FixedUpdate()
     {
@@ -63,9 +64,10 @@ public class SpawnController : MonoBehaviour
     {
         ProgStepChangeEvent evtArgs = (ProgStepChangeEvent) evt;
 
-        if (evtArgs.progStep == 5)
+        if (evtArgs.progStep == 5 && endSpawned == false)
         {
             nextObjectToSpawn = endArea;
+            endSpawned = true;
         }
     }
 
@@ -78,7 +80,6 @@ public class SpawnController : MonoBehaviour
 
         GameObject objectToSpawn = nextObjectToSpawn == null ? platformConfig.Platforms[Random.Range(0, platformConfig.Platforms.Length)] : endArea;
         PlatformComponent platformComponent = objectToSpawn.GetComponent<PlatformComponent>();
-        PlatformType typeToSpawn = platformComponent.PlatformType;
         GameObject spawnedGameObject;
 
         int randomNumber = Random.Range(1, 101);
