@@ -18,7 +18,7 @@ public class InputController : MonoBehaviour
         {
             eventManager.FireEvent(EventTypes.JumpEvent, new JumpEvent(JumpInputType.jumpDown));
         }
-        if (Input.GetKey(KeyCode.Space))
+        else if (Input.GetKey(KeyCode.Space))
         {
             eventManager.FireEvent(EventTypes.JumpEvent, new JumpEvent(JumpInputType.jumpHold));
         }

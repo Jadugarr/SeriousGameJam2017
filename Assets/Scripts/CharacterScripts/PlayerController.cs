@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     private int playerDir = 0;
     private bool doJump = false;
     private bool ableToAddJump = false;
-    private bool ableToJump = false;
+    private bool ableToJump = true;
     private float jumpAcc = 0f;
 
 
@@ -132,7 +132,6 @@ public class PlayerController : MonoBehaviour
         {
             ableToJump = false;
             ableToAddJump = true;
-            jumpAcc += Time.deltaTime;
             doJump = true;
         }
         if (ableToAddJump && inputType == JumpInputType.jumpHold)
@@ -179,7 +178,7 @@ public class PlayerController : MonoBehaviour
 
         if (knockback)
         {
-            velocity.y = charConfig.KnockbackStrength.y;
+     //       velocity.y = charConfig.KnockbackStrength.y;
         }
 
         float targetVelocityX = input.x * currentSpeed;
