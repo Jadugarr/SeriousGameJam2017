@@ -887,6 +887,53 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!1001 &508031792
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 898536314}
+    m_Modifications:
+    - target: {fileID: 4717749186947184, guid: b0f4bde3d6c8b9043836602b8d3fd063, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4717749186947184, guid: b0f4bde3d6c8b9043836602b8d3fd063, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 4717749186947184, guid: b0f4bde3d6c8b9043836602b8d3fd063, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4717749186947184, guid: b0f4bde3d6c8b9043836602b8d3fd063, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4717749186947184, guid: b0f4bde3d6c8b9043836602b8d3fd063, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4717749186947184, guid: b0f4bde3d6c8b9043836602b8d3fd063, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4717749186947184, guid: b0f4bde3d6c8b9043836602b8d3fd063, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4717749186947184, guid: b0f4bde3d6c8b9043836602b8d3fd063, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114384720944422218, guid: b0f4bde3d6c8b9043836602b8d3fd063,
+        type: 2}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 2121731647}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: b0f4bde3d6c8b9043836602b8d3fd063, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &553172324
 GameObject:
   m_ObjectHideFlags: 0
@@ -5155,6 +5202,11 @@ Prefab:
       propertyPath: progressHelm
       value: 
       objectReference: {fileID: 1522686859}
+    - target: {fileID: 212345536549866598, guid: abe26dedcfedaf44b82e3ab09ae5ab7f,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abe26dedcfedaf44b82e3ab09ae5ab7f, type: 2}
   m_IsPrefabParent: 0
@@ -5392,3 +5444,9 @@ GameObject:
   m_PrefabParentObject: {fileID: 1819224166539326, guid: abe26dedcfedaf44b82e3ab09ae5ab7f,
     type: 2}
   m_PrefabInternal: {fileID: 1603420981}
+--- !u!114 &2121731647 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114969412577181848, guid: abe26dedcfedaf44b82e3ab09ae5ab7f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1603420981}
+  m_Script: {fileID: 11500000, guid: 50ebc2b6f3c0fde479a7d828eb016b07, type: 3}

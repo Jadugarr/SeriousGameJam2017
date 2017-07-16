@@ -9,9 +9,11 @@ public class PlayerAnimator : MonoBehaviour {
 	private const string ANIMATOR_JUMP = "jump";
 	private const string ANIMATOR_ATTACK = "attack";
 	private const string ANIMATOR_STRIP = "stripping";
+	private const string ANIMATOR_AIRBORNE = "airborne";
 
 	private EventManager eventManager = EventManager.Instance;
 	private bool isLookingLeft = false;
+	private bool isAirborne = true;
 
 	[SerializeField]
 	protected Animator feetAnimator;
@@ -26,49 +28,45 @@ public class PlayerAnimator : MonoBehaviour {
 
 	void Start()
 	{
-		eventManager.RegisterForEvent(EventTypes.JumpEvent, OnJump);
 		eventManager.RegisterForEvent(EventTypes.AttackInput, OnAttackInput);
 		eventManager.RegisterForEvent(EventTypes.EndSequenceEvent, OnPlayerStrip);
 	}
 
 	void OnDestroy()
 	{
-		eventManager.RemoveFromEvent(EventTypes.JumpEvent, OnJump);
 		eventManager.RemoveFromEvent(EventTypes.AttackInput, OnAttackInput);
 		eventManager.RemoveFromEvent(EventTypes.EndSequenceEvent, OnPlayerStrip);
 	}
 
 	// Update is called once per frame
-	void FixedUpdate () 
+	void Update () 
 	{
 		Vector2 velocity = playerController.GetPlayerVel();
+		float runSpeed = Mathf.Abs(velocity.x);
+		float verticalSpeed = velocity.y;
 
-		if( isLookingLeft && velocity.x > 0.2)
+		isAirborne = !playerController.GetMovController().collisions.below;
+		feetAnimator.SetBool(ANIMATOR_AIRBORNE, isAirborne);
+		bodyAnimator.SetBool(ANIMATOR_AIRBORNE, isAirborne);
+
+		if( isLookingLeft && velocity.x > 1)
 		{
 			// turn right
-			Vector3 bodyScale = bodyAnimator.gameObject.transform.localScale;
-			Vector3 feetScale = feetAnimator.gameObject.transform.localScale;
-			bodyScale.x *= -1f;
-			feetScale.x *= -1f;
-			bodyAnimator.gameObject.transform.localScale = bodyScale;
-			feetAnimator.gameObject.transform.localScale = feetScale;
+			Vector3 scale = playerController.gameObject.transform.localScale;
+			scale.x *= -1f;
+			playerController.gameObject.transform.localScale = scale;
 
 			isLookingLeft = false;
 		}
-		else if( !isLookingLeft && velocity.x < -0.2)
+		else if( !isLookingLeft && velocity.x < -1)
 		{
 			// turn left
-			Vector3 bodyScale = bodyAnimator.gameObject.transform.localScale;
-			Vector3 feetScale = feetAnimator.gameObject.transform.localScale;
-			bodyScale.x *= -1f;
-			feetScale.x *= -1f;
-			bodyAnimator.gameObject.transform.localScale = bodyScale;
-			feetAnimator.gameObject.transform.localScale = feetScale;
+			Vector3 scale = gameObject.transform.localScale;
+			scale.x *= -1f;
+			gameObject.transform.localScale = scale;
 
 			isLookingLeft = true;
 		}
-		float runSpeed = Mathf.Abs(velocity.x);
-		float verticalSpeed = velocity.y + 1.5f;
 
 		feetAnimator.SetFloat(ANIMATOR_HORIZONTAL_SPEED, runSpeed);
 		feetAnimator.SetFloat(ANIMATOR_VERTICAL_SPEED, verticalSpeed);
@@ -77,11 +75,6 @@ public class PlayerAnimator : MonoBehaviour {
 		bodyAnimator.SetFloat(ANIMATOR_VERTICAL_SPEED, verticalSpeed);
 	}
 
-	private void OnJump(IEvent jumpEvent)
-	{
-		feetAnimator.SetTrigger(ANIMATOR_JUMP);
-		bodyAnimator.SetTrigger(ANIMATOR_JUMP);
-	}
 
 	private void OnAttackInput(IEvent args)
 	{
