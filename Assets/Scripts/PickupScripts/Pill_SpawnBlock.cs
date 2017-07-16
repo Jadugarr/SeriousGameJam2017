@@ -30,6 +30,9 @@ public class Pill_SpawnBlock : MonoBehaviour {
             {
                 hiddenBlockSR[i].color = Color.Lerp(startColor, new Color(1f, 1f, 1f, 1f), lerpAcc);
             }
+        } else if(hiddenBlock.activeSelf)
+        {
+            Destroy(this.gameObject);
         }
 	}
 
