@@ -6,5 +6,6 @@
     VeryBigPlatformPill,
     Slope,
     Quest1,
-    Quest2
+    Quest2,
+    Quest3
 }

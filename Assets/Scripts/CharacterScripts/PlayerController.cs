@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -6,6 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PolygonCollider2D swordCollider;
 
     public TextMesh protoText;
+    public Image progressHelm;
 
     //Private Stuff
     private EventManager eventManager = EventManager.Instance;
@@ -87,7 +89,7 @@ public class PlayerController : MonoBehaviour
             currentProgStep = 5;
             currentSpeed = charConfig.MovementSpeed100;
         }
-        protoText.text = "Progress: " + currentProgress; 
+        progressHelm.rectTransform.localPosition = new Vector3(-280f + ((560f/100f) * currentProgress), progressHelm.rectTransform.localPosition.y, progressHelm.rectTransform.localPosition.z);
     }
     
     public Vector2 GetPlayerVel()
