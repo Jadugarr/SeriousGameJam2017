@@ -25,4 +25,5 @@ MonoBehaviour:
   progressPerPill: 5
   progressLossPerFall: 10
   progressPerEnemySlain: 15
+  progressLossPerHitTaken: 10
   jumpTime: 0

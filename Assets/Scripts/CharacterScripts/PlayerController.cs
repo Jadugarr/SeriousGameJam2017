@@ -6,7 +6,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private CharacterConfig charConfig;
     [SerializeField] private PolygonCollider2D swordCollider;
 
-    public TextMesh protoText;
     public Image progressHelm;
 
     //Private Stuff
@@ -41,6 +40,7 @@ public class PlayerController : MonoBehaviour
         eventManager.RegisterForEvent(EventTypes.AxisInputEvent, OnAxisInput);
         eventManager.RegisterForEvent(EventTypes.AttackInput, OnAttackInput);
         eventManager.RegisterForEvent(EventTypes.PlayerHit, OnPlayerHit);
+        eventManager.RegisterForEvent(EventTypes.PlayerRespawned, FellDown);
         controller = GetComponent<MovementController>();
         gravity = -(2 * charConfig.JumpHeight) / Mathf.Pow(charConfig.TimeToJumpMax, 2);
         jumpVelocity = Mathf.Abs(gravity) * charConfig.TimeToJumpMax;
@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateProgressBar()
     {
+        currentProgress = Mathf.Clamp(currentProgress, 0, 101);
         if(currentProgress < 10)
         {
             currentProgStep = 0;
@@ -108,7 +109,7 @@ public class PlayerController : MonoBehaviour
         UpdateProgressBar();
     }
 
-    public void FellDown()
+    public void FellDown(IEvent respawnedEvent)
     {
         currentProgress -= charConfig.progressLossPerFall;
         UpdateProgressBar();
@@ -116,6 +117,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnPlayerHit(IEvent evt)
     {
+        currentProgress -= charConfig.progressLossPerFall;
+        UpdateProgressBar();
         velocity.x = charConfig.KnockbackStrength.x;
         knockback = true;
     }

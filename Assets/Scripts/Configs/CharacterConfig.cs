@@ -20,6 +20,7 @@ public class CharacterConfig : ScriptableObject
     [SerializeField] public int progressPerPill;
     [SerializeField] public int progressLossPerFall;
     [SerializeField] public int progressPerEnemySlain;
+    [SerializeField] public int progressLossPerHitTaken;
 
     [SerializeField] public float jumpTime;
 }
