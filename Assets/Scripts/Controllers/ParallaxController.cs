@@ -46,6 +46,11 @@ public class ParallaxController : MonoBehaviour {
         midTileMostRight = midParaArr[midParaArr.Length - 1];
     }
 
+    void OnDestroy()
+    {
+        eventManager.RemoveFromEvent(EventTypes.ProgStepChangeEvent, ProgStepChange);
+    }
+
     private void PlayerDirEvent(IEvent playerDirEvent)
     {
         playerDir = ((PlayerDirectionEvent)playerDirEvent).playerDirection;
