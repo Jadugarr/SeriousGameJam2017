@@ -16,7 +16,15 @@ public class InputController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            eventManager.FireEvent(EventTypes.JumpEvent, new JumpEvent());
+            eventManager.FireEvent(EventTypes.JumpEvent, new JumpEvent(JumpInputType.jumpDown));
+        }
+        if (Input.GetKey(KeyCode.Space))
+        {
+            eventManager.FireEvent(EventTypes.JumpEvent, new JumpEvent(JumpInputType.jumpHold));
+        }
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            eventManager.FireEvent(EventTypes.JumpEvent, new JumpEvent(JumpInputType.jumpRelease));
         }
         if (Input.GetAxisRaw("Horizontal") != 0f || Input.GetAxisRaw("Vertical") != 0f)
         {

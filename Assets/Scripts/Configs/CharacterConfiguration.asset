@@ -11,17 +11,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1096e1c38be8df747b8fe62d55ba8f37, type: 3}
   m_Name: CharacterConfiguration
   m_EditorClassIdentifier: 
-  JumpHeight: 4
+  JumpHeight: 3
   MovementSpeed0: 8
   MovementSpeed10: 10
   MovementSpeed30: 12
   MovementSpeed60: 16
   MovementSpeed90: 20
   MovementSpeed100: 24
-  TimeToJumpMax: 0.3
+  TimeToJumpMax: 0.4
   AccelerationTimeGrounded: 0.05
   AccelerationTimeAir: 0.05
   KnockbackStrength: {x: -15, y: 15}
   progressPerPill: 5
   progressLossPerFall: 10
   progressPerEnemySlain: 15
+  jumpTime: 0.2

@@ -18,9 +18,12 @@ public class PlayerController : MonoBehaviour
     private Animator playerAnimator;
 
     private bool knockback = false;
-    private bool startJump = false;
     private bool isAttacking = false;
     private int playerDir = 0;
+    private bool doJump = false;
+    private bool ableToAddJump = false;
+    private bool ableToJump = false;
+    private float jumpAcc = 0f;
 
 
     //PLAYERGAMELOGIC
@@ -123,9 +126,32 @@ public class PlayerController : MonoBehaviour
 
     private void OnJump(IEvent jumpEvent)
     {
-        if (controller.collisions.below)
+        JumpInputType inputType = ((JumpEvent)jumpEvent).jumpInputType;
+
+        if (controller.collisions.below && ableToJump && inputType == JumpInputType.jumpDown)
         {
-            startJump = true;
+            ableToJump = false;
+            ableToAddJump = true;
+            jumpAcc += Time.deltaTime;
+            doJump = true;
+        }
+        if (ableToAddJump && inputType == JumpInputType.jumpHold)
+        {
+            if (jumpAcc < charConfig.jumpTime)
+            {
+                jumpAcc += Time.deltaTime;
+                doJump = true;
+            }
+            else
+            {
+                jumpAcc = 0f;
+                ableToAddJump = false;
+            }
+        }
+        if(!ableToJump && inputType == JumpInputType.jumpRelease)
+        {
+            ableToJump = true;
+            ableToAddJump = false;
         }
     }
 
@@ -146,7 +172,7 @@ public class PlayerController : MonoBehaviour
             velocity.y = 0f;
         }
 
-        if (startJump)
+        if (doJump)
         {
             velocity.y = jumpVelocity;
         }
@@ -161,7 +187,7 @@ public class PlayerController : MonoBehaviour
             (controller.collisions.below) ? charConfig.AccelerationTimeGrounded : charConfig.AccelerationTimeAir);
         velocity.y += gravity * Time.deltaTime;
         controller.Move(new Vector3(velocity.x, velocity.y, 0f) * Time.deltaTime);
-        startJump = false;
+        doJump = false;
         knockback = false;
         input = Vector2.zero;
     }
