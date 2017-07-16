@@ -19,7 +19,7 @@ public class SpawnController : MonoBehaviour
     private Vector3 lastSpawnedPosition;
     private Dictionary<PlatformType, List<GameObject>> platformPool = new Dictionary<PlatformType, List<GameObject>>();
 
-    public void Update()
+    public void FixedUpdate()
     {
         if (lastLevelPosition == Vector3.zero)
         {
@@ -27,16 +27,12 @@ public class SpawnController : MonoBehaviour
         }
 
         currentThreshold += playerGameObject.transform.position.x - lastLevelPosition.x;
-        gameObject.transform.Translate(new Vector3(playerGameObject.transform.position.x - lastLevelPosition.x, 0, 0));
         lastLevelPosition = playerGameObject.transform.position;
 
         if (currentThreshold >= moveThresholdToSpawn)
         {
-            Vector3 currentPos = gameObject.transform.position;
-            gameObject.transform.position = new Vector3(Mathf.Floor(currentPos.x), Mathf.Floor(currentPos.y),
-                Mathf.Floor(currentPos.z));
+            currentThreshold -= moveThresholdToSpawn;
             SpawnPlatform();
-            currentThreshold = 0f;
         }
     }
 
@@ -104,7 +100,7 @@ public class SpawnController : MonoBehaviour
             new Vector3(xPos, yPositionToSpawn, 0), objectToSpawn.transform.rotation);
 
         lastSpawnedPosition = spawnedGameObject.transform.position;
-        gameObject.transform.Translate(new Vector3(0, 1, 0));
+        gameObject.transform.Translate(new Vector3(moveThresholdToSpawn, 1, 0));
 
         SpawnEnemy(spawnedGameObject);
     }
