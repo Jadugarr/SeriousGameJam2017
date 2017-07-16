@@ -80,6 +80,7 @@ public class SpawnController : MonoBehaviour
             {
                 spawnedGameObject = platformPool[typeToSpawn][0];
                 spawnedGameObject.SetActive(true);
+                spawnedGameObject.GetComponent<PlatformComponent>().Activate();
                 platformPool[typeToSpawn].Remove(spawnedGameObject);
             }
             else

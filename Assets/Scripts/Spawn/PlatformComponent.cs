@@ -6,13 +6,13 @@ public class PlatformComponent : MonoBehaviour
     public int platformWidth;
 
     private GameObject destructionZone;
-    private CheckpointBehaviour checkpoint;
+    private CheckpointBehaviour[] checkpoints;
     private EventManager eventManager = EventManager.Instance;
 
     void Awake()
     {
         destructionZone = GameObject.FindGameObjectWithTag("DestructionMarker");
-        checkpoint = GetComponentInChildren<CheckpointBehaviour>();
+        checkpoints = GetComponentsInChildren<CheckpointBehaviour>();
     }
 
     void Update()
@@ -20,6 +20,14 @@ public class PlatformComponent : MonoBehaviour
         if (gameObject.transform.position.x <= destructionZone.transform.position.x)
         {
             eventManager.FireEvent(EventTypes.EnteredDestructionZone, new EnteredDestructionZoneEvent(gameObject));
+        }
+    }
+
+    public void Activate()
+    {
+        foreach (CheckpointBehaviour checkpointBehaviour in checkpoints)
+        {
+            checkpointBehaviour.gameObject.SetActive(true);
         }
     }
 }
