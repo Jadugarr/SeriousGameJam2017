@@ -28,6 +28,8 @@ public class ParallaxController : MonoBehaviour {
     private Transform midTileMostRight;
 
     public float transTime = 2.5f;
+    public ParticleSystem particleSystem;
+    public ParticleSystem particleSystem2;
     private bool transToDark = false;
     private bool transToNice = false;
     private float transAcc = 0f;
@@ -37,6 +39,7 @@ public class ParallaxController : MonoBehaviour {
     void Start () {
         //eventManager.RegisterForEvent(EventTypes.AxisInputEvent, PlayerDirEvent);
         cam = GameObject.FindGameObjectWithTag("Camera");
+        particleSystem2.gameObject.SetActive(true);
         eventManager.RegisterForEvent(EventTypes.ProgStepChangeEvent, ProgStepChange);
         frontTileMostRight = frontParaArr[frontParaArr.Length - 1];
         midTileMostRight = midParaArr[midParaArr.Length - 1];
@@ -54,12 +57,21 @@ public class ParallaxController : MonoBehaviour {
         {
             darkTheme = false;
             transToNice = true;
+            particleSystem.Clear();
+            particleSystem.gameObject.SetActive(false);
+            particleSystem2.gameObject.SetActive(true);
             midTileMostRight.GetComponent<SpriteRenderer>().sprite = midTransToNice;
+            frontTileMostRight.GetComponent<SpriteRenderer>().sprite = frontTransToNice;
         } 
         if(step <= 2 && !darkTheme)
         {
             darkTheme = true;
             transToDark = true;
+            particleSystem2.Clear();
+            particleSystem.gameObject.SetActive(true);
+            particleSystem2.gameObject.SetActive(false);
+            midTileMostRight.GetComponent<SpriteRenderer>().sprite = midTransToDark;
+            frontTileMostRight.GetComponent<SpriteRenderer>().sprite = frontTransToDark;
         }
     }
 
@@ -94,6 +106,7 @@ public class ParallaxController : MonoBehaviour {
             if(transAcc > transTime)
             {
                 transAcc = 0f;
+                var main = particleSystem.main;
                 transToNice = false;
             }
             for (int i = 0; i < midParaArr.Length; i++)
@@ -104,6 +117,45 @@ public class ParallaxController : MonoBehaviour {
                     midParaArr[i].transform.Translate(80f, 0f, 0f);
                     midTileMostRight = midParaArr[i];
                     midTileMostRight.GetComponent<SpriteRenderer>().sprite = midNice;
+                }
+            }
+            for (int i = 0; i < frontParaArr.Length; i++)
+            {
+                frontParaArr[i].Translate(-transMultiply * paraConfig.Mid_ParallaxSpeed * Time.deltaTime, 0f, 0f);
+                if (frontParaArr[i].transform.localPosition.x < paraConfig.boundaryLeft)
+                {
+                    frontParaArr[i].transform.Translate(80f, 0f, 0f);
+                    frontTileMostRight = frontParaArr[i];
+                    frontTileMostRight.GetComponent<SpriteRenderer>().sprite = frontNice;
+                }
+            }
+        } else if(transToDark)
+        {
+            transAcc += Time.deltaTime;
+            if (transAcc > transTime)
+            {
+                transAcc = 0f;
+                var main = particleSystem.main;
+                transToDark = false;
+            }
+            for (int i = 0; i < midParaArr.Length; i++)
+            {
+                midParaArr[i].Translate(-transMultiply * paraConfig.Mid_ParallaxSpeed * Time.deltaTime, 0f, 0f);
+                if (midParaArr[i].transform.localPosition.x < paraConfig.boundaryLeft)
+                {
+                    midParaArr[i].transform.Translate(80f, 0f, 0f);
+                    midTileMostRight = midParaArr[i];
+                    midTileMostRight.GetComponent<SpriteRenderer>().sprite = midDark;
+                }
+            }
+            for (int i = 0; i < frontParaArr.Length; i++)
+            {
+                frontParaArr[i].Translate(-transMultiply * paraConfig.Mid_ParallaxSpeed * Time.deltaTime, 0f, 0f);
+                if (frontParaArr[i].transform.localPosition.x < paraConfig.boundaryLeft)
+                {
+                    frontParaArr[i].transform.Translate(80f, 0f, 0f);
+                    frontTileMostRight = frontParaArr[i];
+                    frontTileMostRight.GetComponent<SpriteRenderer>().sprite = frontDark;
                 }
             }
         }
