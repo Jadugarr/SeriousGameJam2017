@@ -4964,6 +4964,40 @@ Prefab:
       propertyPath: midParaArr.Array.data[4]
       value: 
       objectReference: {fileID: 1796345334}
+    - target: {fileID: 114675753729899284, guid: 15c47c94a340f264c954575480e8e1af,
+        type: 2}
+      propertyPath: frontDark
+      value: 
+      objectReference: {fileID: 21300000, guid: 0c598a168bc22434aac5e2a4430a65e0,
+        type: 3}
+    - target: {fileID: 114675753729899284, guid: 15c47c94a340f264c954575480e8e1af,
+        type: 2}
+      propertyPath: midDark
+      value: 
+      objectReference: {fileID: 21300000, guid: 6d8b3691b1929b647ab84a1f7cfd910b,
+        type: 3}
+    - target: {fileID: 114675753729899284, guid: 15c47c94a340f264c954575480e8e1af,
+        type: 2}
+      propertyPath: frontTransToNice
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114675753729899284, guid: 15c47c94a340f264c954575480e8e1af,
+        type: 2}
+      propertyPath: midTransToNice
+      value: 
+      objectReference: {fileID: 21300000, guid: d8b6082e49d1cf743882a3a7525750c8,
+        type: 3}
+    - target: {fileID: 114675753729899284, guid: 15c47c94a340f264c954575480e8e1af,
+        type: 2}
+      propertyPath: midNice
+      value: 
+      objectReference: {fileID: 21300000, guid: 2bfdf16f34635f44595af72b9e29de16,
+        type: 3}
+    - target: {fileID: 114675753729899284, guid: 15c47c94a340f264c954575480e8e1af,
+        type: 2}
+      propertyPath: transTime
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 15c47c94a340f264c954575480e8e1af, type: 2}
   m_IsPrefabParent: 0

@@ -22,9 +22,9 @@ MonoBehaviour:
   AccelerationTimeGrounded: 0.05
   AccelerationTimeAir: 0.05
   KnockbackStrength: {x: -15, y: 15}
-  progressPerPill: 5
+  progressPerPill: 30
   progressLossPerFall: 10
-  progressPerEnemySlain: 2
+  progressPerEnemySlain: 30
   progressLossPerHitTaken: 10
   lossPerTimeSpeed: 0.5
   jumpTime: 0.2
