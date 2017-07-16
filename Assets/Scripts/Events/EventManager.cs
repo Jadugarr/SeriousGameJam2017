@@ -9,7 +9,8 @@ public enum EventTypes
     AttackInput,
     PlayerDirectionEvent,
     PlayerSpotted,
-    PlayerHit
+    PlayerHit,
+    PlayerPassedCheckpoint
 }
 
 /// <summary>

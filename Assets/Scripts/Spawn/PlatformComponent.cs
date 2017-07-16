@@ -6,11 +6,13 @@ public class PlatformComponent : MonoBehaviour
     public int platformWidth;
 
     private GameObject destructionZone;
+    private CheckpointBehaviour checkpoint;
     private EventManager eventManager = EventManager.Instance;
 
     void Awake()
     {
         destructionZone = GameObject.FindGameObjectWithTag("DestructionMarker");
+        checkpoint = GetComponentInChildren<CheckpointBehaviour>();
     }
 
     void Update()
