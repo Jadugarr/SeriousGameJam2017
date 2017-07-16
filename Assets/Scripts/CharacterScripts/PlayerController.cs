@@ -54,7 +54,6 @@ public class PlayerController : MonoBehaviour
         eventManager.RemoveFromEvent(EventTypes.AxisInputEvent, OnAxisInput);
         eventManager.RemoveFromEvent(EventTypes.AttackInput, OnAttackInput);
         eventManager.RemoveFromEvent(EventTypes.PlayerHit, OnPlayerHit);
-        eventManager.RemoveFromEvent(EventTypes.PlayerHit, OnPlayerHit);
     }
 
     private void UpdateProgressBar()
