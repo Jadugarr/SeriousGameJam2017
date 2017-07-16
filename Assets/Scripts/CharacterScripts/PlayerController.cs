@@ -60,35 +60,59 @@ public class PlayerController : MonoBehaviour
     private void UpdateProgressBar()
     {
         currentProgress = Mathf.Clamp(currentProgress, 0, 101);
-        if(currentProgress < 10)
-        {
-            currentProgStep = 0;
-            currentSpeed = charConfig.MovementSpeed0;
-        }
-        if(currentProgress >= 10)
-        {
-            currentProgStep = 1;
-            currentSpeed = charConfig.MovementSpeed10;
-        }
-        if (currentProgress >= 30)
-        {
-            currentProgStep = 2;
-            currentSpeed = charConfig.MovementSpeed30;
-        }
-        if (currentProgress >= 60)
-        {
-            currentProgStep = 3;
-            currentSpeed = charConfig.MovementSpeed60;
-        }
-        if (currentProgress >= 90)
-        {
-            currentProgStep = 4;
-            currentSpeed = charConfig.MovementSpeed90;
-        }
         if (currentProgress >= 100)
         {
-            currentProgStep = 5;
+            if (currentProgStep != 5)
+            {
+                eventManager.FireEvent(EventTypes.ProgStepChangeEvent, new ProgStepChangeEvent(5));
+                currentProgStep = 5;
+            }
             currentSpeed = charConfig.MovementSpeed100;
+        }
+        else if (currentProgress >= 90)
+        {
+            if (currentProgStep != 4)
+            {
+                eventManager.FireEvent(EventTypes.ProgStepChangeEvent, new ProgStepChangeEvent(4));
+                currentProgStep = 4;
+            }
+            currentSpeed = charConfig.MovementSpeed90;
+        } 
+        else if (currentProgress >= 60)
+        {
+            if (currentProgStep != 4)
+            {
+                eventManager.FireEvent(EventTypes.ProgStepChangeEvent, new ProgStepChangeEvent(4));
+                currentProgStep = 4;
+            }
+            currentSpeed = charConfig.MovementSpeed60;
+        }
+        else if (currentProgress >= 30)
+        {
+            if (currentProgStep != 2)
+            {
+                eventManager.FireEvent(EventTypes.ProgStepChangeEvent, new ProgStepChangeEvent(2));
+                currentProgStep = 2;
+            }
+            currentSpeed = charConfig.MovementSpeed30;
+        }
+        else if(currentProgress >= 10)
+        {
+            if (currentProgStep != 1)
+            {
+                eventManager.FireEvent(EventTypes.ProgStepChangeEvent, new ProgStepChangeEvent(1));
+                currentProgStep = 1;
+            }
+            currentSpeed = charConfig.MovementSpeed10;
+        }
+        else if(currentProgress < 10)
+        {
+            if (currentProgStep != 0)
+            {
+                eventManager.FireEvent(EventTypes.ProgStepChangeEvent, new ProgStepChangeEvent(0));
+                currentProgStep = 0;
+            }
+            currentSpeed = charConfig.MovementSpeed0;
         }
         progressHelm.rectTransform.localPosition = new Vector3(-280f + ((560f/100f) * currentProgress), progressHelm.rectTransform.localPosition.y, progressHelm.rectTransform.localPosition.z);
     }

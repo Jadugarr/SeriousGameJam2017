@@ -12,7 +12,8 @@ public enum EventTypes
     PlayerHit,
     PlayerPassedCheckpoint,
     EndSequenceEvent,
-    PlayerRespawned
+    PlayerRespawned,
+    ProgStepChangeEvent
 }
 
 /// <summary>
